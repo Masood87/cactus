@@ -17,8 +17,8 @@ hasCJKLanguage = false
 	enableRSS = true
 	enableToc = true
 
-	enableDisqus = false
-	disqusShortname = ""
+	enableDisqus = true
+	disqusShortname = "masoodsadat"
 
 
 	enableSummary = true
