@@ -8,11 +8,40 @@
   </url>
   
   <url>
+    <loc>/posts/2018-05-18-basics_of_github_through_command_line/</loc>
+    <lastmod>2018-05-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/perceptions-about-electricity-in-afghanistan/</loc>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
   </url>
   
   <url>
+    <loc>/categories/afghanistan/</loc>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/afghansurvey/</loc>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/custom-analysis/</loc>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -23,8 +52,26 @@
   </url>
   
   <url>
+    <loc>/tags/electricity/</loc>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/function/</loc>
     <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
+    <lastmod>2018-05-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/git/</loc>
+    <lastmod>2018-05-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -48,7 +95,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2018-05-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

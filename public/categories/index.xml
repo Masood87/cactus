@@ -6,9 +6,37 @@
     <description>Recent content in Categories on Masood Sadat Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Afghanistan</title>
+      <link>/categories/afghanistan/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/afghanistan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Custom Analysis</title>
+      <link>/categories/custom-analysis/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/custom-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>/categories/git/</link>
+      <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/git/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>R Tips</title>

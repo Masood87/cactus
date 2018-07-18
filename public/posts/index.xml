@@ -21,5 +21,26 @@
  There are many ways to inspect and find about missing values in a dataset.</description>
     </item>
     
+    <item>
+      <title>Basics of GitHub Through Command Line</title>
+      <link>/posts/2018-05-18-basics_of_github_through_command_line/</link>
+      <pubDate>Fri, 18 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2018-05-18-basics_of_github_through_command_line/</guid>
+      <description>Create account and repository on github.com Go to github.com and create an account. Once, account is created, create a repository in Repositories tab and click on the green button New. The following page opens.
+ NOTE: A repository is something like a project folder.
+   Copy repository URL After a new repository is created, copy the clone url link. This link is used to clone the repository from server to the computer.</description>
+    </item>
+    
+    <item>
+      <title>Perceptions About Electricity in Afghanistan: Insights From the Survey of the Afghan People</title>
+      <link>/posts/perceptions-about-electricity-in-afghanistan/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/perceptions-about-electricity-in-afghanistan/</guid>
+      <description>About This analysis is prepared following a requrest from Peter Stevenson of Mercy Corps–Afghanistan.
+This analysis uses the Survey of the Afghan People data, an annual survey of perceptions from a nationally representative sample of Afghans. The survey has collected attitudes and perceptions uninterruptedly since 2006, with over 97,000 Afghans taking part. The the latest survey report here, or download the raw data here.  Awareness of Government Supplied Electricity Projects  Key Questions: x11as.</description>
+    </item>
+    
   </channel>
 </rss>
