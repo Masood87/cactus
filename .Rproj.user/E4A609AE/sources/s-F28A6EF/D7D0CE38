@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1237760080",
+    "hash" : "0",
     "id" : "D7D0CE38",
-    "lastKnownWriteTime" : 1531918570,
-    "last_content_update" : 1531918570,
+    "lastKnownWriteTime" : 1531919025,
+    "last_content_update" : 1531919025,
     "path" : "~/Documents/GitHub/cactus/config.toml",
     "project_path" : "config.toml",
     "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
     },
     "relative_order" : 1,
     "source_on_save" : false,
