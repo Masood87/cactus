@@ -1,0 +1,84 @@
+---
+title: Linear regression with R
+author: 'Masood Sadat'
+date: '2018-06-12'
+slug: linear-regression-with-r
+categories:
+  - r tips
+tags:
+  - inferential statistics
+---
+
+
+# Estimating linear regression
+
+Before starting, I am going to load a number of utility libraries for this session.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(broom)
+library(plotly)
+```
+
+A simple linear regression using **mtcars** dataset. I want to look at how weight of a car is associated with how many miles a car travels per gallon of gasoline--an indicator of fuel economy. I am going to look at their summary and scatter plot. For scatter plot, I use base-R's `plot()` function.
+
+
+```{r message=FALSE, warning=FALSE}
+summary(mtcars[, c("wt", "mpg")])
+plot(mtcars$wt, mtcars$mpg)
+```
+
+It seems like heavier cars have lower mileage Next, I regress mpg on weight using linear regression.
+
+```{r message=FALSE, warning=FALSE}
+lm(mpg ~ wt, data = mtcars)
+```
+
+The output from `lm()` function quantifies a negative relationship between weight and mileage. The output however does not provide other useful information such as confidence interval and r-squared, which can be accessed if we feed the `lm` function into `summary()` function.
+
+```{r message=FALSE, warning=FALSE}
+summary(lm(mpg ~ wt, data = mtcars))
+```
+
+Furthermore, `augment()` from **broom** package allows you to access the fitted values and residuals of this regression model, in the form of a data.frame.
+
+```{r message=FALSE, warning=FALSE}
+broom::augment(lm(mpg ~ wt, data = mtcars)) %>% head()
+```
+
+There is also `tidy()` function from **broom** package that makes a "tidy" data.frame of the regression estimates.
+
+```{r message=FALSE, warning=FALSE}
+broom::tidy(lm(mpg ~ wt, data = mtcars)) %>% head()
+```
+
+# Visualizing linear regression
+
+The best way to visualize a simple linear regression is a scatter plot and a fitted regression line. For a simple linear regression, a 2-dimensional plot and a fitted line suffices. Here I use the **ggplot2**'s `ggplot()` function which is made available through the **tidyverse** package.
+
+```{r message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point() + geom_smooth(method = "lm", se = F) + theme_bw()
+```
+
+Visualizing multiple regression becomes more challenging, as each variable in the model has to have a dimension. Therefore, as it is not possible to visualize more than 3 dimensions, a model with two right-hand-side variables can be visualized at most. Here, I am plotting weight, mpg, and horsepower using an **plotly** package that creates interactive plots.
+
+```{r message=FALSE, warning=FALSE}
+plotly::plot_ly(data = mtcars, x = ~wt, y = ~mpg, z = ~hp)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

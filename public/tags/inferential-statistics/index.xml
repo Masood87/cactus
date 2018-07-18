@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Inferential Statistics on Masood Sadat Blog</title>
+    <link>/tags/inferential-statistics/</link>
+    <description>Recent content in Inferential Statistics on Masood Sadat Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/inferential-statistics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linear regression with R</title>
+      <link>/posts/linear-regression-with-r/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/linear-regression-with-r/</guid>
+      <description>Estimating linear regression Before starting, I am going to load a number of utility libraries for this session.
+library(tidyverse) library(broom) library(plotly) A simple linear regression using mtcars dataset. I want to look at how weight of a car is associated with how many miles a car travels per gallon of gasoline–an indicator of fuel economy. I am going to look at their summary and scatter plot.</description>
+    </item>
+    
+  </channel>
+</rss>

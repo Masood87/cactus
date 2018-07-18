@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="A Tutorial for Analysing Survey of the Afghan People in R"/>
+  <meta name="twitter:description" content="1 About the Survey of the Afghan People Since 2006, The Asia Foundation conducts the Survey of the Afghan People, a nationally-representative annual survey. The Survey reflects perceptions about a broad range of topics including security, development, governance, service delivery, women’s rights, and migration. The Survey is broadly used by policy makers, academics, non-governmental organizations working in and on Afghanistan. The Foundation make the Survey’s data public on its website."/>
+  
+    <meta name="twitter:site" content="@masood87r"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Masood Sadat"/>
+  
+
+
+
+		
+		<meta name="author" content="Masood Sadat">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.40.3" />
+		<title>A Tutorial for Analysing Survey of the Afghan People in R &middot; Masood Sadat Blog</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Masood Sadat Blog" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">RSS</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        A Tutorial for Analysing Survey of the Afghan People in R
+                    </h1>
+                    <h2 class="headline">
+                    Jun 5, 2018 00:00
+                    · 713 words
+                    · 4 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="/tags/afghansurvey">AfghanSurvey</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                
+                <section id="post-body">
+                    <div id="about-the-survey-of-the-afghan-people" class="section level2">
+<h2>1 About the Survey of the Afghan People</h2>
+<p>Since 2006, The Asia Foundation conducts <a href="https://asiafoundation.org/where-we-work/afghanistan/survey/"><em><strong>the Survey of the Afghan People</strong></em></a>, a nationally-representative annual survey. The Survey reflects perceptions about a broad range of topics including security, development, governance, service delivery, women’s rights, and migration. The Survey is broadly used by policy makers, academics, non-governmental organizations working in and on Afghanistan. The Foundation make the Survey’s data public on its <a href="https://asiafoundation.org/where-we-work/afghanistan/survey/download-data-form/">website</a>.</p>
+</div>
+<div id="survey-weight" class="section level2">
+<h2>2 Survey Weight</h2>
+<p>National surveys such as the Survey of the Afghan People claim their data represent the general population. This claim is backed by the random selection of individuals that represent the true population. The Survey of the Afghan People collects data from all 34 provinces of Afghanistan, and include men and women, all ethnic groups and languages. The survey uses a multistage systematic sampling method, which means, first the country is divided into 34 stratas (here provinces) and then districts are selected within stratas using probability proportional to size (PPS) systematic sampling. The end product however might not fully represent the provincial, urban/rural, or gender proportions. Therefore, to ensure representativeness, survey weights are applied in analysis. Survey weights are commonly used in national or other types of surveys that claim representativeness of the population.</p>
+<p>To apply survey weights in R require using special treatment of general estimation commands, which is available in packages such as <strong>survey</strong>. This package provides the tools to apply survey weight on various types of estimation commands. The way the <strong>survey</strong> package apply weight is to create a <em>weighted dataset</em>. The Survey data comes in a tabular form and include weight variables. The main weight variable that is used for the analyses in the survey report is <strong>MergeWgt10</strong>. We have to use <strong>svydesign()</strong> function from the <strong>survey</strong> package to produce the weighted data.</p>
+<pre class="r"><code># install.packages(&quot;survey&quot;) # install first if you haven&#39;t
+library(survey)
+sap &lt;- load(&quot;sap.Rda&quot;)
+sap.w &lt;- svydesign(id = ~1, data = sap[!is.na(sap$MergeWgt10), ], weights = ~MergeWgt10) # simple random sampling</code></pre>
+</div>
+<div id="survey-analysis-with-r" class="section level2">
+<h2>2 Survey Analysis with R</h2>
+<p>I have broken down this post into (1) reading data, (2) tabulations and cross-tabulations, (3) descriptive statistics, (4) hypothesis testing, (5) inferential statistics.</p>
+<div id="reading-data" class="section level3">
+<h3>2.1 Reading Data</h3>
+<p>The survey data is made available in <strong>.Rda</strong> (R), <strong>.dta</strong> (Stata) and <strong>.sav</strong> (SPSS) file format. In this tutorial, we go over how to carry out some data manipulation and analysis that is used in the Survey report using R. Ideally if you are using R, you would download <strong>.Rda</strong> file format of the data, in which case you will use `` function to open it in R or <strong>RStudio</strong>.</p>
+<pre class="r"><code>load(file = &quot;file.Rda&quot;)</code></pre>
+<p>If you have the <strong>.dta</strong> (Stata) file format, there are <strong>haven</strong>, <strong>foreign</strong>, and <strong>readstata13</strong> packages that are available and I have used. I suggest to use <strong>readstata13</strong>, because it preserves the labelled variables as factors. Keeping the order becomes very important when you produce tables or graphs; otherwise, you will get categories sorted by alphabetical order, which is not desireable in this case.</p>
+<p>Let’s start by installing the <strong>readstata13</strong> pacakges, then attaching it.</p>
+<pre class="r"><code>install.packages(&quot;readstata13&quot;)
+library(readstata13)
+read.dta13(&quot;file.dta&quot;)</code></pre>
+<p>If you have the <strong>.sav</strong> (SPSS) file format, there are <strong>haven</strong> and <strong>foreign</strong> packages that I have used. As far as I know, both does the job just fine.</p>
+<pre class="r"><code>library(haven)
+read_spss(&quot;file.sav&quot;)</code></pre>
+</div>
+<div id="tabulations-and-cross-tabulations" class="section level3">
+<h3>2.2 Tabulations and Cross-tabulations</h3>
+<p>Preparing a table of frequencies or percentages, which is know as tabulation, is the most widely used method in the survey report given the categorical nature of most of the survey questions. For example, we look at the percentage of people</p>
+<pre class="r"><code>library(dplyr)
+svytable(formula = ~x4+m8, design = sap.w) %&gt;% # weighted cross-tabulation of x4 by m8
+  prop.table(2) %&gt;% # column percentages
+  {.*100} %&gt;% # multiply values by 100
+  round(1) %&gt;% # round the values to one decimal point
+  knitr::kable() # present in a nice table</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">2006</th>
+<th align="right">2007</th>
+<th align="right">2008</th>
+<th align="right">2009</th>
+<th align="right">2010</th>
+<th align="right">2011</th>
+<th align="right">2012</th>
+<th align="right">2013</th>
+<th align="right">2014</th>
+<th align="right">2015</th>
+<th align="right">2016</th>
+<th align="right">2017</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>right direction</td>
+<td align="right">44.3</td>
+<td align="right">42.3</td>
+<td align="right">37.5</td>
+<td align="right">42.3</td>
+<td align="right">46.7</td>
+<td align="right">46.2</td>
+<td align="right">51.5</td>
+<td align="right">57.6</td>
+<td align="right">54.7</td>
+<td align="right">36.7</td>
+<td align="right">29.3</td>
+<td align="right">32.8</td>
+</tr>
+<tr class="even">
+<td>wrong direction</td>
+<td align="right">21.1</td>
+<td align="right">23.7</td>
+<td align="right">32.0</td>
+<td align="right">29.4</td>
+<td align="right">27.0</td>
+<td align="right">34.6</td>
+<td align="right">31.3</td>
+<td align="right">37.5</td>
+<td align="right">40.5</td>
+<td align="right">57.5</td>
+<td align="right">65.9</td>
+<td align="right">61.2</td>
+</tr>
+<tr class="odd">
+<td>some in right, some in wrong direction</td>
+<td align="right">29.4</td>
+<td align="right">25.3</td>
+<td align="right">23.0</td>
+<td align="right">20.6</td>
+<td align="right">21.6</td>
+<td align="right">17.1</td>
+<td align="right">15.4</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td>refused</td>
+<td align="right">1.0</td>
+<td align="right">1.2</td>
+<td align="right">1.1</td>
+<td align="right">0.9</td>
+<td align="right">0.4</td>
+<td align="right">0.1</td>
+<td align="right">0.2</td>
+<td align="right">0.1</td>
+<td align="right">0.4</td>
+<td align="right">0.6</td>
+<td align="right">0.6</td>
+<td align="right">0.8</td>
+</tr>
+<tr class="odd">
+<td>don’t know</td>
+<td align="right">4.3</td>
+<td align="right">7.5</td>
+<td align="right">6.4</td>
+<td align="right">6.8</td>
+<td align="right">4.3</td>
+<td align="right">2.0</td>
+<td align="right">1.6</td>
+<td align="right">4.8</td>
+<td align="right">4.5</td>
+<td align="right">5.3</td>
+<td align="right">4.3</td>
+<td align="right">5.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fposts%2fa-tutorial-for-analysing-survey-of-the-afghan-people-in-r%2f - A%20Tutorial%20for%20Analysing%20Survey%20of%20the%20Afghan%20People%20in%20R by @masood87r"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'masoodsadat'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/masood87">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="">
+        <i class="fa fa-ignorefiles"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.linkedin.com/in/masood-sadat-ab502a57/">
+        <i class="fa fa-linkedin-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/masood87r">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Masood Sadat
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87289893-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+    </body>
+</html>
