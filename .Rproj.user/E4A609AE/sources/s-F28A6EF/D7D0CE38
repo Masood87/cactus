@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1531918573148.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1237760080",
+    "id" : "D7D0CE38",
+    "lastKnownWriteTime" : 1531918570,
+    "last_content_update" : 1531918570,
+    "path" : "~/Documents/GitHub/cactus/config.toml",
+    "project_path" : "config.toml",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "toml"
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Plot Missing Values</title>
+      <link>/posts/plot-missing-values/</link>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/plot-missing-values/</guid>
+      <description>In this post, we will explore visdat package to visualize missing values. Then, we will recreate a similar plot using ggplot2 package. Next, using the ggplot2 method, we will visualize other numeric or character values in a dataset. Finally, using the ggplot2 method, we will create a custom function that will plot any value in any dataset.
+ There are many ways to inspect and find about missing values in a dataset.</description>
+    </item>
+    
+  </channel>
+</rss>
