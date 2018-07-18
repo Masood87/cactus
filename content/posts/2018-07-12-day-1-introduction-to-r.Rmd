@@ -1,0 +1,459 @@
+---
+title: 'Day 1: Introduction to R'
+author: Masood Sadat
+date: '2018-07-12'
+slug: day-1-introduction-to-r
+categories:
+  - teaching
+tags:
+  - r tips
+---
+  
+# R interface
+
+![](/post/2018-07-12-day-1-introduction-to-r_files/rstudio interface.png){width=100%}
+
+- **R Script** is where R code is typed and saved. We can execute codes directly from R script to Console using **Cntrl** + **Enter** (Windwos) or **command** + **Enter** (Mac). We can also add notes after typing "#", which will not execute as the rest of the code.
+- **Console** is where code is executed and result is printed. We can directly type code in console or run code from _R script_ section.
+- **Environment** is where all the objects (data) are saved.
+- The last section include **Directory** which is a link to a folder of your interest in your computer where you store your files. **Plots** display any static graphs you create. **Packages** lists all the R packages install. **Help** is where you can find help on functions and packages. **Viewer** displays any interactive graphs or tables you create.
+
+
+# Basics
+
+## Arithmetic
+
+**Arthmetic operators**
+  
+  - Addition: +
+  - Subtraction: -
+  - Multiplication: *
+  - Division: /
+  - Exponentiation: ^
+  - Modulo (Remainder from division): %%
+  - Integer Division: %/%
+  
+  Examples
+
+```{r}
+2018 %% 10
+(2000 + 18) %% 5 # more complex
+2018 %/% 5
+```
+
+
+## Assignment
+
+Assign 4 to an object **x**
+  
+```{r}
+x <- 4 # assign 4 to x
+x # prints x
+```
+
+Use object **x** in calculation
+
+```{r}
+y <- 2
+x*y
+```
+
+Assign result of calculation to another object **z**
+  
+```{r}
+z <- x*y
+z
+```
+
+## Data types in R
+
+- **numerics:** Decimals values like 4.5
+- **integers:** Natural numbers like 4. Integers are also numerics.
+- **logical:** Boolean values TRUE and FALSE
+- **characters:** Text or string values, e.g. "Kabul"
+
+Create different objects for each data type
+
+```{r}
+my_numeric   <- 2018
+my_integer   <- 8L
+my_character <- "Kabul"
+my_logical   <- TRUE
+```
+
+Check **class** of objects
+
+```{r}
+class(my_numeric)
+class(my_integer)
+class(my_character)
+class(my_logical)
+```
+
+## Data objects in R
+
+We have multiple types of objects in R:
+  
+- **Scalars:** _Scalars are singular element objects, like one number or one character (we don't talk about it in this course)_
+- **Vectors:** _A sequence (collection) of data with one dimension, that is length_
+- **Matrices:** _A collection of same data type arranged into rows and columns_
+- **Arrays:** _Arrays are similar to matrices but can have more than two dimensions (we don't talk about it in this course)_
+- **Data Frames:** _A collection of data points arranged into rows and columns (like matrices) but each column can have different data type (unlike matrices)_
+- **Lists:** _A collection/list of data objects, such as vectors, matrices, data frames, or even other lists_
+
+![](/post/2018-07-12-day-1-introduction-to-r_files/objects.png){width=100%}
+
+# Vectors
+
+Vectors are one-dimension arrays that can hold numeric data, character data, or logical data. In other words, a vector is a sequence (or set) of data points.
+  
+For example, a **numeric** vector hold numeric data and looks like this: _1, 2.1, -4, 6.8, 2, -1_. A **character** vector holds character data looks like this: _"Kabul", "India", "Boat", "5", "."_. A **logical** vector holds logical data and looks like this: _FALSE, TRUE, TRUE, FALSE, TRUE_.
+
+There are special functions that create a vector. For example:
+  
+```{r}
+1:4
+```
+
+```{r}
+rep("hello", 10) # repeat "hello", 10 times
+```
+
+In general, we create a vector with the combine function **c()**
+  
+```{r}
+numeric_vector <- c(1, 2.1, -4, 6.8, 2, -1)
+character_vector <- c("Kabul", "India", "کشتی", "5", ".")
+boolean_vector <- c(FALSE, TRUE, TRUE, FALSE, TRUE)
+```
+
+## Vectors Arithmetic
+
+Element by element operation
+
+```{r}
+A <- c(1, 2, 3)
+B <- c(10, 10, 10)
+A + B
+```
+
+
+```{r}
+A / B
+```
+
+
+## Vector index
+
+A vector have many characteristics, such as **class**, **length**, and elements. Lenght of a vector is number of elements a vector has, irrespective of its class.
+
+```{r}
+A <- c("Kabul", "Mazar", "Herat", "Jalalabad", "Kandahar")
+length(A)
+```
+
+**Vector index:** Retrieve parts of a vector by index inside "[ ]". For example, element 1 of vector **A** is "Kabul".
+
+```{r}
+A[1]
+```
+
+Let's look at multiple indeces
+
+```{r}
+A[3:5] # or A[c(3:5)] or A[c(3,4,5)]
+```
+
+There is also **negative index** that exclude mentioned elements
+
+```{r}
+A[-c(1:2)] # NOT A[-1:2], why???
+```
+
+_We know A has `r length(A)` elements. What happens if we ask for `r length(A)+1`th element?_
+
+
+# Matrices
+
+A matrix, another object type in R, is a collection of elements of the **same data type** (numeric, character, or logical) arranged into a fixed number of rows and columns.
+
+```{r}
+A <- matrix(1:9, nrow = 3)
+A
+```
+
+Or a character matrix
+
+```{r}
+B <- matrix(c("Kabul", "Mazar", "Herat", "Kandahar"), nrow = 2)
+B
+```
+
+Matrix is its own class. How do we check class of an object?
+
+```{r eval=FALSE}
+class(A)
+class(B)
+```
+
+## Matrix index
+
+Vectors had one dimension. Matrices have two dimensions. Consistent with number of dimensions, matrix indeces also have two values.
+
+Let's look at matrix A:
+  
+```{r}
+A
+```
+
+How can we call value in second column and second row?
+  
+```{r}
+A[2, 2]
+```
+
+How can we call all elements of second column?
+  
+```{r}
+A[, 2]
+```
+
+How do we call all elements of first row?
+
+```{r}
+A[1, ]
+```
+
+Practice a little bit more with indexing matrices with yourself. It is both very useful and super cool.
+
+## Matrix Arithmetic
+
+Matrix arithmetic resembles vector arithmetic. Let's look at a few examples to understand.
+
+```{r}
+A <- matrix(1:9, nrow = 3)
+B <- matrix(11:19, nrow = 3)
+A
+B
+```
+
+- Matrix operation with a scalar
+
+```{r}
+A * 2
+```
+
+- Matrix operation with another matrix
+
+```{r}
+A * B
+```
+
+## Joining matrices
+
+There are two ways to join matrices: 
+- **rbind:** add new rows
+- **cbind:** add new columns
+
+In **row bind**, we add one matrix on top of another matrix
+
+![](/post/2018-07-12-day-1-introduction-to-r_files/row bind.png){width=100%}
+
+In **column bind**, we add one matrix on the right side of another matrix
+
+![](/post/2018-07-12-day-1-introduction-to-r_files/column bind.png){width=100%}
+
+Let's join matrix A and B, once by row and once by column:
+  
+```{r}
+A <- matrix(1:9, nrow = 3)
+B <- matrix(11:19, nrow = 3)
+rbind(A, B)
+cbind(A, B)
+```
+
+Switch A and B's position in **rbind()** and **cbind()** and find out what happens.
+
+```{r eval=FALSE}
+rbind(B, A)
+cbind(B, A)
+```
+
+# Data frames
+
+Data frames are similar to matrices in terms of having multiple rows and columns, but different as data frames does not have to be in the same data type. Data frames allow each column to have its own data type. For example, one column can be numeric, and another column can be character. _**Most data sets in the world are data frame.**_
+
+R comes with pre-installed data frames. You can directly call a pre-install data by typing its name. Let's look at one of the most used data frames **mtcars**. 
+
+```{r}
+mtcars
+```
+
+As you can see, typing a data frame name prints all of it. Let's use **head()** and **tail()** functions that prints only top 6 rows and top 6 columns.
+
+```{r}
+head(mtcars, 3) # only three rows
+```
+
+As data frames can contain multiple types of data, such as numeric, character, logical, or integer, we need a function that gives a summary of this information. That funciton is **str()** that shows you the structure of your data frame, or any other object (try it with a vector, matrix, list, etc.).
+
+```{r}
+str(mtcars)
+```
+
+## Creating data frame
+
+Data frames can be created in multiple ways. Let's see a few cases.
+
+- _data frame from matrix_
+
+```{r}
+A <- matrix(1:9, nrow = 3)
+A_df <- data.frame(A)
+class(A_df)
+```
+
+- _Data frame from multiple vectors of the same length_
+
+```{r}
+numbers <- 1:5
+cities <- c("Kabul", "Mazar", "Herat", "Jalalabad", "Kandahar")
+population_in_million <- c(4.635, 0.693, 1.780, 0.356, 0.557)
+Afg_major_cities <- data.frame(numbers, cities, population_in_million)
+Afg_major_cities
+```
+
+- _Data frame from imported tabular data (e.g. Excel)_
+
+```{r}
+# We will study importing data in the next lecture
+read.csv("~/Documents/PRSO/Programs/Data Analysis with R/Day 1/Afg_major_cities.csv", header = TRUE)
+```
+
+## Data frame index
+
+Data frame indeces are largely the same as matrices: we call row number and column number in that order inside "[ ]".
+
+Let's see Kabul's population which is the first row in the **Afg_major_cities** data frame.
+
+```{r}
+Afg_major_cities[1, ]
+```
+
+There are two ways for data frames to be indexed by column. For example, third column of data frame can be called **[, 3]** or **[[3]]**. The second method simply means **third element** which is used widely with **list** objects.
+
+There is one useful indexing technique that is available for data frame is we can use **rowname** and **columnname**.
+
+Let's print population column ("population_in_million").
+
+```{r}
+Afg_major_cities[, "population_in_million"]
+```
+
+Note, the result of either indeces is a vector, not a column or row of a data frame.
+
+**There are additional unique indexing techniques.**
+
+R uses **$** operator to select a variable inside a data frame.
+
+```{r}
+Afg_major_cities$population_in_million # is the same as Afg_major_cities[, 3]
+```
+
+We can also select an element, for example 3rd element of 2nd column, using **$** operator.
+
+```{r}
+Afg_major_cities$cities[3] # is the same as Afg_major_cities[3, 2]
+```
+
+## Column and Row Names
+
+Most data are stored in data frame and it is important to assign appropriate names to columns (and sometiems rows) to help recognize them.
+
+Let's start by looking at the column names and row names of our data frame using **colnames()** and **rownames()** functions.
+
+```{r}
+colnames(Afg_major_cities)
+rownames(Afg_major_cities)
+```
+
+To change column or row names, we can use the same functions. Here, we capitalize the column names which require changing the names altogether.
+
+```{r}
+colnames(Afg_major_cities) <- c("Numbers", "Cities", "Population_in_million")
+Afg_major_cities
+```
+
+To change one or a few column/row names, we use indexing techniques. Let's change 2nd and 3rd column names.
+
+```{r}
+colnames(Afg_major_cities)[c(2,3)] <- c("Major_cities", "Population")
+Afg_major_cities
+```
+
+# Lists
+
+Lists is another type of object in R, and a unique one. It is unique as it includes other types of objects within itself. For example, a list can include multiple data frames, vectors, matrices, scalars, and even other lists as its elements.
+
+To create a list, we use **list()** function.
+
+```{r}
+my_list <- list(x = 4, matrix(1:4, nrow = 2), Afg_major_cities)
+my_list
+```
+
+We can access each element using double brackets [[ ]]. For example, we access the 3rd element of **my_list** which is our data frame.
+
+```{r}
+my_list[[3]]
+```
+
+We can go further and access a column of the data frame (3rd element of **my_list**) using indexing techniques in data frame.
+
+```{r}
+my_list[[3]]$Population
+# or other techniques... (you get the idea)
+# my_list[[3]][, 3]
+# my_list[[3]][[3]]
+```
+
+# Relational Operators
+
+Relational operators are used to compare between values, and **output boolean**.
+
+- `<` for less than
+- `>` for greater than
+- `<=` for less than or equal to
+- `>=` for greater than or equal to
+- `==` for equal to each other
+- `!=` not equal to each other
+
+For example:
+
+```{r}
+1 < 2
+```
+
+```{r}
+2 == 1
+```
+
+We can use relational operators with vectors too, which **output boolean vectors**.
+
+For example:
+
+```{r}
+A <- c(1, 4, 2)
+B <- c(3, 3, 1)
+A >= B
+```
+
+**NOTE:** If one vector is shorter, the elements of shorter vector is _recycled_. For example, the shorter vector has three elements (3,2,1), which will be recycled to five elements (3,2,1,**3,2**).
+
+For example:
+
+```{r}
+A <- c(1, 4, 2, 5, 2, 2)
+B <- c(3, 2, 1)
+A >= B # Vector B becomes c(3, 2, 1, 3, 2, 1)
+```

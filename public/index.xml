@@ -6,10 +6,19 @@
     <description>Recent content on Masood Sadat Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 22 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Day 1: Introduction to R</title>
+      <link>/posts/day-1-introduction-to-r/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/day-1-introduction-to-r/</guid>
+      <description>R interface   R Script is where R code is typed and saved. We can execute codes directly from R script to Console using Cntrl + Enter (Windwos) or command + Enter (Mac). We can also add notes after typing “#”, which will not execute as the rest of the code. Console is where code is executed and result is printed. We can directly type code in console or run code from R script section.</description>
+    </item>
     
     <item>
       <title>Plot Missing Values</title>

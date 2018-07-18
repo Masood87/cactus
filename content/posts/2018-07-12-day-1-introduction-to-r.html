@@ -1,0 +1,458 @@
+---
+title: 'Day 1: Introduction to R'
+author: Masood Sadat
+date: '2018-07-12'
+slug: day-1-introduction-to-r
+categories:
+  - teaching
+tags:
+  - r tips
+---
+
+
+
+<div id="r-interface" class="section level1">
+<h1>R interface</h1>
+<div class="figure">
+<img src="/post/2018-07-12-day-1-introduction-to-r_files/rstudio%20interface.png" style="width:100.0%" />
+
+</div>
+<ul>
+<li><strong>R Script</strong> is where R code is typed and saved. We can execute codes directly from R script to Console using <strong>Cntrl</strong> + <strong>Enter</strong> (Windwos) or <strong>command</strong> + <strong>Enter</strong> (Mac). We can also add notes after typing “#”, which will not execute as the rest of the code.</li>
+<li><strong>Console</strong> is where code is executed and result is printed. We can directly type code in console or run code from <em>R script</em> section.</li>
+<li><strong>Environment</strong> is where all the objects (data) are saved.</li>
+<li>The last section include <strong>Directory</strong> which is a link to a folder of your interest in your computer where you store your files. <strong>Plots</strong> display any static graphs you create. <strong>Packages</strong> lists all the R packages install. <strong>Help</strong> is where you can find help on functions and packages. <strong>Viewer</strong> displays any interactive graphs or tables you create.</li>
+</ul>
+</div>
+<div id="basics" class="section level1">
+<h1>Basics</h1>
+<div id="arithmetic" class="section level2">
+<h2>Arithmetic</h2>
+<p><strong>Arthmetic operators</strong></p>
+<ul>
+<li>Addition: +</li>
+<li>Subtraction: -</li>
+<li>Multiplication: *</li>
+<li>Division: /</li>
+<li>Exponentiation: ^</li>
+<li>Modulo (Remainder from division): %%</li>
+<li>Integer Division: %/%</li>
+</ul>
+<p>Examples</p>
+<pre class="r"><code>2018 %% 10</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>(2000 + 18) %% 5 # more complex</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>2018 %/% 5</code></pre>
+<pre><code>## [1] 403</code></pre>
+</div>
+<div id="assignment" class="section level2">
+<h2>Assignment</h2>
+<p>Assign 4 to an object <strong>x</strong></p>
+<pre class="r"><code>x &lt;- 4 # assign 4 to x
+x # prints x</code></pre>
+<pre><code>## [1] 4</code></pre>
+<p>Use object <strong>x</strong> in calculation</p>
+<pre class="r"><code>y &lt;- 2
+x*y</code></pre>
+<pre><code>## [1] 8</code></pre>
+<p>Assign result of calculation to another object <strong>z</strong></p>
+<pre class="r"><code>z &lt;- x*y
+z</code></pre>
+<pre><code>## [1] 8</code></pre>
+</div>
+<div id="data-types-in-r" class="section level2">
+<h2>Data types in R</h2>
+<ul>
+<li><strong>numerics:</strong> Decimals values like 4.5</li>
+<li><strong>integers:</strong> Natural numbers like 4. Integers are also numerics.</li>
+<li><strong>logical:</strong> Boolean values TRUE and FALSE</li>
+<li><strong>characters:</strong> Text or string values, e.g. “Kabul”</li>
+</ul>
+<p>Create different objects for each data type</p>
+<pre class="r"><code>my_numeric   &lt;- 2018
+my_integer   &lt;- 8L
+my_character &lt;- &quot;Kabul&quot;
+my_logical   &lt;- TRUE</code></pre>
+<p>Check <strong>class</strong> of objects</p>
+<pre class="r"><code>class(my_numeric)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>class(my_integer)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>class(my_character)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(my_logical)</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+</div>
+<div id="data-objects-in-r" class="section level2">
+<h2>Data objects in R</h2>
+<p>We have multiple types of objects in R:</p>
+<ul>
+<li><strong>Scalars:</strong> <em>Scalars are singular element objects, like one number or one character (we don’t talk about it in this course)</em></li>
+<li><strong>Vectors:</strong> <em>A sequence (collection) of data with one dimension, that is length</em></li>
+<li><strong>Matrices:</strong> <em>A collection of same data type arranged into rows and columns</em></li>
+<li><strong>Arrays:</strong> <em>Arrays are similar to matrices but can have more than two dimensions (we don’t talk about it in this course)</em></li>
+<li><strong>Data Frames:</strong> <em>A collection of data points arranged into rows and columns (like matrices) but each column can have different data type (unlike matrices)</em></li>
+<li><strong>Lists:</strong> <em>A collection/list of data objects, such as vectors, matrices, data frames, or even other lists</em></li>
+</ul>
+<div class="figure">
+<img src="/post/2018-07-12-day-1-introduction-to-r_files/objects.png" style="width:100.0%" />
+
+</div>
+</div>
+</div>
+<div id="vectors" class="section level1">
+<h1>Vectors</h1>
+<p>Vectors are one-dimension arrays that can hold numeric data, character data, or logical data. In other words, a vector is a sequence (or set) of data points.</p>
+<p>For example, a <strong>numeric</strong> vector hold numeric data and looks like this: <em>1, 2.1, -4, 6.8, 2, -1</em>. A <strong>character</strong> vector holds character data looks like this: <em>“Kabul”, “India”, “Boat”, “5”, “.”</em>. A <strong>logical</strong> vector holds logical data and looks like this: <em>FALSE, TRUE, TRUE, FALSE, TRUE</em>.</p>
+<p>There are special functions that create a vector. For example:</p>
+<pre class="r"><code>1:4</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>rep(&quot;hello&quot;, 10) # repeat &quot;hello&quot;, 10 times</code></pre>
+<pre><code>##  [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot;
+##  [9] &quot;hello&quot; &quot;hello&quot;</code></pre>
+<p>In general, we create a vector with the combine function <strong>c()</strong></p>
+<pre class="r"><code>numeric_vector &lt;- c(1, 2.1, -4, 6.8, 2, -1)
+character_vector &lt;- c(&quot;Kabul&quot;, &quot;India&quot;, &quot;کشتی&quot;, &quot;5&quot;, &quot;.&quot;)
+boolean_vector &lt;- c(FALSE, TRUE, TRUE, FALSE, TRUE)</code></pre>
+<div id="vectors-arithmetic" class="section level2">
+<h2>Vectors Arithmetic</h2>
+<p>Element by element operation</p>
+<pre class="r"><code>A &lt;- c(1, 2, 3)
+B &lt;- c(10, 10, 10)
+A + B</code></pre>
+<pre><code>## [1] 11 12 13</code></pre>
+<pre class="r"><code>A / B</code></pre>
+<pre><code>## [1] 0.1 0.2 0.3</code></pre>
+</div>
+<div id="vector-index" class="section level2">
+<h2>Vector index</h2>
+<p>A vector have many characteristics, such as <strong>class</strong>, <strong>length</strong>, and elements. Lenght of a vector is number of elements a vector has, irrespective of its class.</p>
+<pre class="r"><code>A &lt;- c(&quot;Kabul&quot;, &quot;Mazar&quot;, &quot;Herat&quot;, &quot;Jalalabad&quot;, &quot;Kandahar&quot;)
+length(A)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p><strong>Vector index:</strong> Retrieve parts of a vector by index inside “[ ]”. For example, element 1 of vector <strong>A</strong> is “Kabul”.</p>
+<pre class="r"><code>A[1]</code></pre>
+<pre><code>## [1] &quot;Kabul&quot;</code></pre>
+<p>Let’s look at multiple indeces</p>
+<pre class="r"><code>A[3:5] # or A[c(3:5)] or A[c(3,4,5)]</code></pre>
+<pre><code>## [1] &quot;Herat&quot;     &quot;Jalalabad&quot; &quot;Kandahar&quot;</code></pre>
+<p>There is also <strong>negative index</strong> that exclude mentioned elements</p>
+<pre class="r"><code>A[-c(1:2)] # NOT A[-1:2], why???</code></pre>
+<pre><code>## [1] &quot;Herat&quot;     &quot;Jalalabad&quot; &quot;Kandahar&quot;</code></pre>
+<p><em>We know A has 5 elements. What happens if we ask for 6th element?</em></p>
+</div>
+</div>
+<div id="matrices" class="section level1">
+<h1>Matrices</h1>
+<p>A matrix, another object type in R, is a collection of elements of the <strong>same data type</strong> (numeric, character, or logical) arranged into a fixed number of rows and columns.</p>
+<pre class="r"><code>A &lt;- matrix(1:9, nrow = 3)
+A</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>Or a character matrix</p>
+<pre class="r"><code>B &lt;- matrix(c(&quot;Kabul&quot;, &quot;Mazar&quot;, &quot;Herat&quot;, &quot;Kandahar&quot;), nrow = 2)
+B</code></pre>
+<pre><code>##      [,1]    [,2]      
+## [1,] &quot;Kabul&quot; &quot;Herat&quot;   
+## [2,] &quot;Mazar&quot; &quot;Kandahar&quot;</code></pre>
+<p>Matrix is its own class. How do we check class of an object?</p>
+<pre class="r"><code>class(A)
+class(B)</code></pre>
+<div id="matrix-index" class="section level2">
+<h2>Matrix index</h2>
+<p>Vectors had one dimension. Matrices have two dimensions. Consistent with number of dimensions, matrix indeces also have two values.</p>
+<p>Let’s look at matrix A:</p>
+<pre class="r"><code>A</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>How can we call value in second column and second row?</p>
+<pre class="r"><code>A[2, 2]</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p>How can we call all elements of second column?</p>
+<pre class="r"><code>A[, 2]</code></pre>
+<pre><code>## [1] 4 5 6</code></pre>
+<p>How do we call all elements of first row?</p>
+<pre class="r"><code>A[1, ]</code></pre>
+<pre><code>## [1] 1 4 7</code></pre>
+<p>Practice a little bit more with indexing matrices with yourself. It is both very useful and super cool.</p>
+</div>
+<div id="matrix-arithmetic" class="section level2">
+<h2>Matrix Arithmetic</h2>
+<p>Matrix arithmetic resembles vector arithmetic. Let’s look at a few examples to understand.</p>
+<pre class="r"><code>A &lt;- matrix(1:9, nrow = 3)
+B &lt;- matrix(11:19, nrow = 3)
+A</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<pre class="r"><code>B</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   11   14   17
+## [2,]   12   15   18
+## [3,]   13   16   19</code></pre>
+<ul>
+<li>Matrix operation with a scalar</li>
+</ul>
+<pre class="r"><code>A * 2</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    8   14
+## [2,]    4   10   16
+## [3,]    6   12   18</code></pre>
+<ul>
+<li>Matrix operation with another matrix</li>
+</ul>
+<pre class="r"><code>A * B</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   11   56  119
+## [2,]   24   75  144
+## [3,]   39   96  171</code></pre>
+</div>
+<div id="joining-matrices" class="section level2">
+<h2>Joining matrices</h2>
+<p>There are two ways to join matrices: - <strong>rbind:</strong> add new rows - <strong>cbind:</strong> add new columns</p>
+<p>In <strong>row bind</strong>, we add one matrix on top of another matrix</p>
+<div class="figure">
+<img src="/post/2018-07-12-day-1-introduction-to-r_files/row%20bind.png" style="width:100.0%" />
+
+</div>
+<p>In <strong>column bind</strong>, we add one matrix on the right side of another matrix</p>
+<div class="figure">
+<img src="/post/2018-07-12-day-1-introduction-to-r_files/column%20bind.png" style="width:100.0%" />
+
+</div>
+<p>Let’s join matrix A and B, once by row and once by column:</p>
+<pre class="r"><code>A &lt;- matrix(1:9, nrow = 3)
+B &lt;- matrix(11:19, nrow = 3)
+rbind(A, B)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## [4,]   11   14   17
+## [5,]   12   15   18
+## [6,]   13   16   19</code></pre>
+<pre class="r"><code>cbind(A, B)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    4    7   11   14   17
+## [2,]    2    5    8   12   15   18
+## [3,]    3    6    9   13   16   19</code></pre>
+<p>Switch A and B’s position in <strong>rbind()</strong> and <strong>cbind()</strong> and find out what happens.</p>
+<pre class="r"><code>rbind(B, A)
+cbind(B, A)</code></pre>
+</div>
+</div>
+<div id="data-frames" class="section level1">
+<h1>Data frames</h1>
+<p>Data frames are similar to matrices in terms of having multiple rows and columns, but different as data frames does not have to be in the same data type. Data frames allow each column to have its own data type. For example, one column can be numeric, and another column can be character. <em><strong>Most data sets in the world are data frame.</strong></em></p>
+<p>R comes with pre-installed data frames. You can directly call a pre-install data by typing its name. Let’s look at one of the most used data frames <strong>mtcars</strong>.</p>
+<pre class="r"><code>mtcars</code></pre>
+<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+<p>As you can see, typing a data frame name prints all of it. Let’s use <strong>head()</strong> and <strong>tail()</strong> functions that prints only top 6 rows and top 6 columns.</p>
+<pre class="r"><code>head(mtcars, 3) # only three rows</code></pre>
+<pre><code>##                mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4     21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710    22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</code></pre>
+<p>As data frames can contain multiple types of data, such as numeric, character, logical, or integer, we need a function that gives a summary of this information. That funciton is <strong>str()</strong> that shows you the structure of your data frame, or any other object (try it with a vector, matrix, list, etc.).</p>
+<pre class="r"><code>str(mtcars)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+<div id="creating-data-frame" class="section level2">
+<h2>Creating data frame</h2>
+<p>Data frames can be created in multiple ways. Let’s see a few cases.</p>
+<ul>
+<li><em>data frame from matrix</em></li>
+</ul>
+<pre class="r"><code>A &lt;- matrix(1:9, nrow = 3)
+A_df &lt;- data.frame(A)
+class(A_df)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<ul>
+<li><em>Data frame from multiple vectors of the same length</em></li>
+</ul>
+<pre class="r"><code>numbers &lt;- 1:5
+cities &lt;- c(&quot;Kabul&quot;, &quot;Mazar&quot;, &quot;Herat&quot;, &quot;Jalalabad&quot;, &quot;Kandahar&quot;)
+population_in_million &lt;- c(4.635, 0.693, 1.780, 0.356, 0.557)
+Afg_major_cities &lt;- data.frame(numbers, cities, population_in_million)
+Afg_major_cities</code></pre>
+<pre><code>##   numbers    cities population_in_million
+## 1       1     Kabul                 4.635
+## 2       2     Mazar                 0.693
+## 3       3     Herat                 1.780
+## 4       4 Jalalabad                 0.356
+## 5       5  Kandahar                 0.557</code></pre>
+<ul>
+<li><em>Data frame from imported tabular data (e.g. Excel)</em></li>
+</ul>
+<pre class="r"><code># We will study importing data in the next lecture
+read.csv(&quot;~/Documents/PRSO/Programs/Data Analysis with R/Day 1/Afg_major_cities.csv&quot;, header = TRUE)</code></pre>
+<pre><code>##   X numbers    cities population_in_million
+## 1 1       1     Kabul                 4.635
+## 2 2       2     Mazar                 0.693
+## 3 3       3     Herat                 1.780
+## 4 4       4 Jalalabad                 0.356
+## 5 5       5  Kandahar                 0.557</code></pre>
+</div>
+<div id="data-frame-index" class="section level2">
+<h2>Data frame index</h2>
+<p>Data frame indeces are largely the same as matrices: we call row number and column number in that order inside “[ ]”.</p>
+<p>Let’s see Kabul’s population which is the first row in the <strong>Afg_major_cities</strong> data frame.</p>
+<pre class="r"><code>Afg_major_cities[1, ]</code></pre>
+<pre><code>##   numbers cities population_in_million
+## 1       1  Kabul                 4.635</code></pre>
+<p>There are two ways for data frames to be indexed by column. For example, third column of data frame can be called <strong>[, 3]</strong> or <strong>[[3]]</strong>. The second method simply means <strong>third element</strong> which is used widely with <strong>list</strong> objects.</p>
+<p>There is one useful indexing technique that is available for data frame is we can use <strong>rowname</strong> and <strong>columnname</strong>.</p>
+<p>Let’s print population column (“population_in_million”).</p>
+<pre class="r"><code>Afg_major_cities[, &quot;population_in_million&quot;]</code></pre>
+<pre><code>## [1] 4.635 0.693 1.780 0.356 0.557</code></pre>
+<p>Note, the result of either indeces is a vector, not a column or row of a data frame.</p>
+<p><strong>There are additional unique indexing techniques.</strong></p>
+<p>R uses <strong>$</strong> operator to select a variable inside a data frame.</p>
+<pre class="r"><code>Afg_major_cities$population_in_million # is the same as Afg_major_cities[, 3]</code></pre>
+<pre><code>## [1] 4.635 0.693 1.780 0.356 0.557</code></pre>
+<p>We can also select an element, for example 3rd element of 2nd column, using <strong>$</strong> operator.</p>
+<pre class="r"><code>Afg_major_cities$cities[3] # is the same as Afg_major_cities[3, 2]</code></pre>
+<pre><code>## [1] Herat
+## Levels: Herat Jalalabad Kabul Kandahar Mazar</code></pre>
+</div>
+<div id="column-and-row-names" class="section level2">
+<h2>Column and Row Names</h2>
+<p>Most data are stored in data frame and it is important to assign appropriate names to columns (and sometiems rows) to help recognize them.</p>
+<p>Let’s start by looking at the column names and row names of our data frame using <strong>colnames()</strong> and <strong>rownames()</strong> functions.</p>
+<pre class="r"><code>colnames(Afg_major_cities)</code></pre>
+<pre><code>## [1] &quot;numbers&quot;               &quot;cities&quot;                &quot;population_in_million&quot;</code></pre>
+<pre class="r"><code>rownames(Afg_major_cities)</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
+<p>To change column or row names, we can use the same functions. Here, we capitalize the column names which require changing the names altogether.</p>
+<pre class="r"><code>colnames(Afg_major_cities) &lt;- c(&quot;Numbers&quot;, &quot;Cities&quot;, &quot;Population_in_million&quot;)
+Afg_major_cities</code></pre>
+<pre><code>##   Numbers    Cities Population_in_million
+## 1       1     Kabul                 4.635
+## 2       2     Mazar                 0.693
+## 3       3     Herat                 1.780
+## 4       4 Jalalabad                 0.356
+## 5       5  Kandahar                 0.557</code></pre>
+<p>To change one or a few column/row names, we use indexing techniques. Let’s change 2nd and 3rd column names.</p>
+<pre class="r"><code>colnames(Afg_major_cities)[c(2,3)] &lt;- c(&quot;Major_cities&quot;, &quot;Population&quot;)
+Afg_major_cities</code></pre>
+<pre><code>##   Numbers Major_cities Population
+## 1       1        Kabul      4.635
+## 2       2        Mazar      0.693
+## 3       3        Herat      1.780
+## 4       4    Jalalabad      0.356
+## 5       5     Kandahar      0.557</code></pre>
+</div>
+</div>
+<div id="lists" class="section level1">
+<h1>Lists</h1>
+<p>Lists is another type of object in R, and a unique one. It is unique as it includes other types of objects within itself. For example, a list can include multiple data frames, vectors, matrices, scalars, and even other lists as its elements.</p>
+<p>To create a list, we use <strong>list()</strong> function.</p>
+<pre class="r"><code>my_list &lt;- list(x = 4, matrix(1:4, nrow = 2), Afg_major_cities)
+my_list</code></pre>
+<pre><code>## $x
+## [1] 4
+## 
+## [[2]]
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4
+## 
+## [[3]]
+##   Numbers Major_cities Population
+## 1       1        Kabul      4.635
+## 2       2        Mazar      0.693
+## 3       3        Herat      1.780
+## 4       4    Jalalabad      0.356
+## 5       5     Kandahar      0.557</code></pre>
+<p>We can access each element using double brackets [[ ]]. For example, we access the 3rd element of <strong>my_list</strong> which is our data frame.</p>
+<pre class="r"><code>my_list[[3]]</code></pre>
+<pre><code>##   Numbers Major_cities Population
+## 1       1        Kabul      4.635
+## 2       2        Mazar      0.693
+## 3       3        Herat      1.780
+## 4       4    Jalalabad      0.356
+## 5       5     Kandahar      0.557</code></pre>
+<p>We can go further and access a column of the data frame (3rd element of <strong>my_list</strong>) using indexing techniques in data frame.</p>
+<pre class="r"><code>my_list[[3]]$Population</code></pre>
+<pre><code>## [1] 4.635 0.693 1.780 0.356 0.557</code></pre>
+<pre class="r"><code># or other techniques... (you get the idea)
+# my_list[[3]][, 3]
+# my_list[[3]][[3]]</code></pre>
+</div>
+<div id="relational-operators" class="section level1">
+<h1>Relational Operators</h1>
+<p>Relational operators are used to compare between values, and <strong>output boolean</strong>.</p>
+<ul>
+<li><code>&lt;</code> for less than</li>
+<li><code>&gt;</code> for greater than</li>
+<li><code>&lt;=</code> for less than or equal to</li>
+<li><code>&gt;=</code> for greater than or equal to</li>
+<li><code>==</code> for equal to each other</li>
+<li><code>!=</code> not equal to each other</li>
+</ul>
+<p>For example:</p>
+<pre class="r"><code>1 &lt; 2</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>2 == 1</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>We can use relational operators with vectors too, which <strong>output boolean vectors</strong>.</p>
+<p>For example:</p>
+<pre class="r"><code>A &lt;- c(1, 4, 2)
+B &lt;- c(3, 3, 1)
+A &gt;= B</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE</code></pre>
+<p><strong>NOTE:</strong> If one vector is shorter, the elements of shorter vector is <em>recycled</em>. For example, the shorter vector has three elements (3,2,1), which will be recycled to five elements (3,2,1,<strong>3,2</strong>).</p>
+<p>For example:</p>
+<pre class="r"><code>A &lt;- c(1, 4, 2, 5, 2, 2)
+B &lt;- c(3, 2, 1)
+A &gt;= B # Vector B becomes c(3, 2, 1, 3, 2, 1)</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
