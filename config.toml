@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "https://lorenzwalthert.netlify.com/"
+baseurl = "https://masood.netlify.com/"
 languageCode = "en"
 title = "Masood Sadat"
 theme = "hugo-theme-cactus-plus"
@@ -17,8 +17,8 @@ hasCJKLanguage = false
 	enableRSS = true
 	enableToc = true
 
-	enableDisqus = true
-	disqusShortname = "lorenzwalthert"
+	enableDisqus = false
+	disqusShortname = ""
 
 
 	enableSummary = true
