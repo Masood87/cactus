@@ -1,24 +1,24 @@
 # Site settings
-baseurl = "https://lorenzwalthert.netlify.com/"
+baseurl = "https://masood.netlify.com/"
 languageCode = "en"
-title = "Lorenz Walthert"
+title = "Masood Sadat Blog"
 theme = "hugo-theme-cactus-plus"
-googleAnalytics = "UA-87289893-1"
+googleAnalytics = ""
 # Set the value to true if your site include CJK (Chinese, Japanese, and Korean languages) characters
 hasCJKLanguage = false
 
 [params]
-	author = "Lorenz Walthert"
+	author = "Masood Sadat"
 	description = "Site Description"
 	bio = "Aspiring Data Scientist"
 
-	twitter = "lorenzwalthert"
+	twitter = "masood87r"
 
 	enableRSS = true
 	enableToc = true
 
 	enableDisqus = true
-	disqusShortname = "lorenzwalthert"
+	disqusShortname = ""
 
 
 	enableSummary = true
@@ -73,9 +73,9 @@ hasCJKLanguage = false
 
 # Add additional social link entries underneath
 [social]
-	twitter-square = "https://www.twitter.com/lorenzwalthert"
-	github-square = "https://www.github.com/lorenzwalthert"
-	linkedin-square = "https://www.linkedin.com/in/lorenzwalthert"
+	twitter-square = "https://www.twitter.com/masood87r"
+	github-square = "https://www.github.com/masood87"
+	linkedin-square = "https://www.linkedin.com/in/masood-sadat-ab502a57/"
 
 
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
