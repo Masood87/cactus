@@ -6,10 +6,20 @@
     <description>Recent content in Git on Masood Sadat Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 18 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Add a local folder to GitHub using the command line</title>
+      <link>/posts/add-a-local-folder-to-github-using-the-command-line/</link>
+      <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/add-a-local-folder-to-github-using-the-command-line/</guid>
+      <description>Did you know you can upload almost anything on Github.com?
+Recently, I have started uploading many of my files on github, besides code. I do it because I am working on two different computers, one at work and one at home, and I think this is a great way to keep my work synchronized. I am not going to talk more about using github at this point–maybe I will have a dedicated post on that later.</description>
+    </item>
     
     <item>
       <title>Basics of GitHub Through Command Line</title>
