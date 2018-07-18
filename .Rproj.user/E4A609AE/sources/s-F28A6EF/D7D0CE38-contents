@@ -1,7 +1,7 @@
 # Site settings
-baseurl = "https://silly-lovelace-7515c6.netlify.com/"
+baseurl = "https://masood.netlify.com/"
 languageCode = "en"
-title = "Masood Sadat"
+title = "Masood Sadat Blog"
 theme = "hugo-theme-cactus-plus"
 googleAnalytics = "UA-87289893-1"
 # Set the value to true if your site include CJK (Chinese, Japanese, and Korean languages) characters
@@ -12,7 +12,7 @@ hasCJKLanguage = false
 	description = "Site Description"
 	bio = "Aspiring Data Scientist"
 
-	twitter = "lorenzwalthert"
+	twitter = "masood87r"
 
 	enableRSS = true
 	enableToc = true
@@ -73,9 +73,9 @@ hasCJKLanguage = false
 
 # Add additional social link entries underneath
 [social]
-	twitter-square = "https://www.twitter.com/lorenzwalthert"
-	github-square = "https://www.github.com/lorenzwalthert"
-	linkedin-square = "https://www.linkedin.com/in/lorenzwalthert"
+	twitter-square = "https://www.twitter.com/masood87r"
+	github-square = "https://www.github.com/masood87"
+	linkedin-square = "https://www.linkedin.com/in/masood-sadat-ab502a57/"
 
 
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
