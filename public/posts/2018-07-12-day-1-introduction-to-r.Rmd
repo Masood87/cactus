@@ -7,9 +7,19 @@ categories:
   - teaching
 tags:
   - r tips
+description: Commence first steps with R using RStudio. Learn about data types and object types in R, and begin using these object types.
 ---
-  
-# R interface
+
+# R and RStudio
+
+**R** is an opern-source programming language for statistical analysis. Being open-source, unlike similar software such as Stata, SAS and SPSS, it is free to use. R was created in 1994 and it has become arguably the most popular language for statistical analysis.
+
+**RStudio** is the most popular graphical user interface (GUI) for R which is developed by a company with the same name.
+
+Read more about R and RStudio here: [R](https://en.wikipedia.org/wiki/R_(programming_language)), [RStudio](https://en.wikipedia.org/wiki/RStudio)
+Install R and RStudio here: [install R](https://cran.r-project.org), [install RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+
+# RStudio interface
 
 ![](/posts/2018-07-12-day-1-introduction-to-r_files/rstudio interface.png){width=100px}
 

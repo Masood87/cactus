@@ -17,7 +17,9 @@
       <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/posts/day-1-introduction-to-r/</guid>
-      <description>R interface   R Script is where R code is typed and saved. We can execute codes directly from R script to Console using Cntrl + Enter (Windwos) or command + Enter (Mac). We can also add notes after typing “#”, which will not execute as the rest of the code. Console is where code is executed and result is printed. We can directly type code in console or run code from R script section.</description>
+      <description>R and RStudio R is an opern-source programming language for statistical analysis. Being open-source, unlike similar software such as Stata, SAS and SPSS, it is free to use. R was created in 1994 and it has become arguably the most popular language for statistical analysis.
+RStudio is the most popular graphical user interface (GUI) for R which is developed by a company with the same name.
+Read more about R and RStudio here: R, RStudio Install R and RStudio here: install R, install RStudio</description>
     </item>
     
   </channel>
