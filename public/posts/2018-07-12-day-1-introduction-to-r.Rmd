@@ -101,7 +101,7 @@ We have multiple types of objects in R:
 - **Data Frames:** _A collection of data points arranged into rows and columns (like matrices) but each column can have different data type (unlike matrices)_
 - **Lists:** _A collection/list of data objects, such as vectors, matrices, data frames, or even other lists_
 
-![](/post/2018-07-12-day-1-introduction-to-r_files/objects.png){width=100%}
+![](/posts/2018-07-12-day-1-introduction-to-r_files/objects.png){width=100%}
 
 # Vectors
 
