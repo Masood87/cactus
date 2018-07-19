@@ -261,7 +261,7 @@ In **row bind**, we add one matrix on top of another matrix
 
 In **column bind**, we add one matrix on the right side of another matrix
 
-![](/post/2018-07-12-day-1-introduction-to-r_files/column bind.png){width=100%}
+![](/posts/2018-07-12-day-1-introduction-to-r_files/column bind.png){width=100%}
 
 Let's join matrix A and B, once by row and once by column:
   
