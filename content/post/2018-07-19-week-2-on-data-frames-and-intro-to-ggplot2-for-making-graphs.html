@@ -1,0 +1,259 @@
+---
+title: 'Week 2: On Data Frames and Intro to ggplot2 For Making Graphs'
+author: Masood Sadat
+date: '2018-07-19'
+categories:
+  - teaching
+tags:
+  - r tips
+slug: week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs
+output:
+  blogdown::html_page:
+    toc: yes
+description: Week 2 of Data Analysis with R; Get comfortable working with data frames. Learn the basics of grammar of graphics, understand appropriate graphs, and start making graphs with ggplot2.
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#data-frames">Data Frames</a><ul>
+<li><a href="#data-frame-index">Data Frame Index</a></li>
+<li><a href="#create-new-columnvariable">Create New Column/Variable</a></li>
+<li><a href="#inspect-data-frames">Inspect Data Frames</a></li>
+</ul></li>
+<li><a href="#basic-graphs-with-ggplot2">Basic Graphs with ggplot2</a><ul>
+<li><a href="#components-of-ggplot2-graphs">Components of ggplot2 Graphs</a></li>
+<li><a href="#types-of-plots-with-ggplot2">Types of Plots With ggplot2</a></li>
+<li><a href="#apply-a-different-theme">Apply a Different Theme</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="data-frames" class="section level1">
+<h1>Data Frames</h1>
+<p><strong>Data frames</strong> are the most widely used data object in R. A data frame is a collection of vectors of the same length, which is also called columns. Each column have their own data type (e.g. numeric, character, etc.). Data frames resemble spread sheets (e.g. MS Excel), and this is the reason for their widespread use.</p>
+<div id="data-frame-index" class="section level3">
+<h3>Data Frame Index</h3>
+<p>Column(s) or row(s) of a data frame can be called using indeces, i.e. “[ ]”. For example, if we have a data frame, df:</p>
+<pre class="r"><code>df &lt;- data.frame(numbers = 1:5, 
+                 cities = c(&quot;Kabul&quot;, &quot;Mazar&quot;, &quot;Herat&quot;, &quot;Jalalabad&quot;, &quot;Kandahar&quot;), 
+                 population = c(4.635, 0.693, 1.780, 0.356, 0.557))</code></pre>
+<pre class="r"><code>df</code></pre>
+<pre><code>##   numbers    cities population
+## 1       1     Kabul      4.635
+## 2       2     Mazar      0.693
+## 3       3     Herat      1.780
+## 4       4 Jalalabad      0.356
+## 5       5  Kandahar      0.557</code></pre>
+<p>then <code>df[2, 2]</code> selects the intersection of first row and the first column of the dataset.</p>
+<pre class="r"><code>df[2, 2]</code></pre>
+<pre><code>## [1] &quot;Mazar&quot;</code></pre>
+<p><code>df[2, ]</code> selects the entire second row (and returns a data frame!),</p>
+<pre class="r"><code>df[2, ]</code></pre>
+<pre><code>##   numbers cities population
+## 2       2  Mazar      0.693</code></pre>
+<p><code>df[, 2]</code> selects the second column (and returns a vector),</p>
+<pre class="r"><code>df[, 2]</code></pre>
+<pre><code>## [1] &quot;Kabul&quot;     &quot;Mazar&quot;     &quot;Herat&quot;     &quot;Jalalabad&quot; &quot;Kandahar&quot;</code></pre>
+<p><code>df[-4, ]</code> selects all columns and rows in <strong>df</strong> data frame, except for the 4th row (and returns a data frame!)</p>
+<pre class="r"><code>df[-4, ]</code></pre>
+<pre><code>##   numbers   cities population
+## 1       1    Kabul      4.635
+## 2       2    Mazar      0.693
+## 3       3    Herat      1.780
+## 5       5 Kandahar      0.557</code></pre>
+<p>and <code>df[c(2,3,1), ]</code> selects first three rows but reorders them (returns a data frame with 3 rows and 5 columns).</p>
+<pre class="r"><code>df[c(2,3,1), ]</code></pre>
+<pre><code>##   numbers cities population
+## 2       2  Mazar      0.693
+## 3       3  Herat      1.780
+## 1       1  Kabul      4.635</code></pre>
+<p>There is also the “$” which is known as the component selector, that selects one column of a data frame. For example, <code>df$cities</code> selects column cities (and returns a vector).</p>
+<pre class="r"><code>df$cities</code></pre>
+<pre><code>## [1] &quot;Kabul&quot;     &quot;Mazar&quot;     &quot;Herat&quot;     &quot;Jalalabad&quot; &quot;Kandahar&quot;</code></pre>
+</div>
+<div id="create-new-columnvariable" class="section level3">
+<h3>Create New Column/Variable</h3>
+<p>We definted data frames as a collection of same length vectors. It is possible to add a vector of same lenght as another column or variable to a data frame. For example, here we add a new column to data frame <strong>df</strong> which was created earlier. We can do so in multiple ways, which only two are explored here. One way is to use <code>data.frame()</code> function.</p>
+<pre class="r"><code>df</code></pre>
+<pre><code>##   numbers    cities population
+## 1       1     Kabul      4.635
+## 2       2     Mazar      0.693
+## 3       3     Herat      1.780
+## 4       4 Jalalabad      0.356
+## 5       5  Kandahar      0.557</code></pre>
+<pre class="r"><code>data.frame(df, new_column = c(T,T,F,F,T))</code></pre>
+<pre><code>##   numbers    cities population new_column
+## 1       1     Kabul      4.635       TRUE
+## 2       2     Mazar      0.693       TRUE
+## 3       3     Herat      1.780      FALSE
+## 4       4 Jalalabad      0.356      FALSE
+## 5       5  Kandahar      0.557       TRUE</code></pre>
+<p>The second way is to use component selector $.</p>
+<pre class="r"><code>df$new_column &lt;- c(T,T,F,F,T)
+df</code></pre>
+<pre><code>##   numbers    cities population new_column
+## 1       1     Kabul      4.635       TRUE
+## 2       2     Mazar      0.693       TRUE
+## 3       3     Herat      1.780      FALSE
+## 4       4 Jalalabad      0.356      FALSE
+## 5       5  Kandahar      0.557       TRUE</code></pre>
+</div>
+<div id="inspect-data-frames" class="section level3">
+<h3>Inspect Data Frames</h3>
+<p>Some useful functions for working with data frames:</p>
+<ul>
+<li><code>nrow()</code>: number of rows</li>
+<li><code>ncol()</code>: number of columns</li>
+<li><code>dim()</code>: dimension</li>
+<li><code>str()</code>: returns the structure of the data frame</li>
+<li><code>colnames()</code>: returns the column names of the data frame</li>
+<li><code>rownames()</code>: returns the row names (if any) of the data frame</li>
+<li><code>summary()</code>: returns summary statistics</li>
+<li><code>head()</code>: returns the first 6 observations of the data frame</li>
+<li><code>tail()</code>: returns the last 6 observations of the data frame</li>
+</ul>
+<p>Let’s use the above functions on <strong>titanic</strong> data which is available in the R memory. First, I turn the <strong>titanic</strong> data into a data frame,</p>
+<pre class="r"><code>titanic &lt;- as.data.frame(Titanic)</code></pre>
+<p>Now, we use the functions on titanic data frame and learn about this data set.</p>
+<pre class="r"><code>nrow(titanic)</code></pre>
+<pre><code>## [1] 32</code></pre>
+<pre class="r"><code>ncol(titanic)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>dim(titanic)</code></pre>
+<pre><code>## [1] 32  5</code></pre>
+<pre class="r"><code>str(titanic)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  5 variables:
+##  $ Class   : Factor w/ 4 levels &quot;1st&quot;,&quot;2nd&quot;,&quot;3rd&quot;,..: 1 2 3 4 1 2 3 4 1 2 ...
+##  $ Sex     : Factor w/ 2 levels &quot;Male&quot;,&quot;Female&quot;: 1 1 1 1 2 2 2 2 1 1 ...
+##  $ Age     : Factor w/ 2 levels &quot;Child&quot;,&quot;Adult&quot;: 1 1 1 1 1 1 1 1 2 2 ...
+##  $ Survived: Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Freq    : num  0 0 35 0 0 0 17 0 118 154 ...</code></pre>
+<pre class="r"><code>colnames(titanic)</code></pre>
+<pre><code>## [1] &quot;Class&quot;    &quot;Sex&quot;      &quot;Age&quot;      &quot;Survived&quot; &quot;Freq&quot;</code></pre>
+<pre class="r"><code>rownames(titanic)</code></pre>
+<pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot; &quot;11&quot; &quot;12&quot; &quot;13&quot; &quot;14&quot;
+## [15] &quot;15&quot; &quot;16&quot; &quot;17&quot; &quot;18&quot; &quot;19&quot; &quot;20&quot; &quot;21&quot; &quot;22&quot; &quot;23&quot; &quot;24&quot; &quot;25&quot; &quot;26&quot; &quot;27&quot; &quot;28&quot;
+## [29] &quot;29&quot; &quot;30&quot; &quot;31&quot; &quot;32&quot;</code></pre>
+<pre class="r"><code>summary(titanic)</code></pre>
+<pre><code>##   Class       Sex        Age     Survived      Freq       
+##  1st :8   Male  :16   Child:16   No :16   Min.   :  0.00  
+##  2nd :8   Female:16   Adult:16   Yes:16   1st Qu.:  0.75  
+##  3rd :8                                   Median : 13.50  
+##  Crew:8                                   Mean   : 68.78  
+##                                           3rd Qu.: 77.00  
+##                                           Max.   :670.00</code></pre>
+<pre class="r"><code>head(titanic)</code></pre>
+<pre><code>##   Class    Sex   Age Survived Freq
+## 1   1st   Male Child       No    0
+## 2   2nd   Male Child       No    0
+## 3   3rd   Male Child       No   35
+## 4  Crew   Male Child       No    0
+## 5   1st Female Child       No    0
+## 6   2nd Female Child       No    0</code></pre>
+<pre class="r"><code>tail(titanic)</code></pre>
+<pre><code>##    Class    Sex   Age Survived Freq
+## 27   3rd   Male Adult      Yes   75
+## 28  Crew   Male Adult      Yes  192
+## 29   1st Female Adult      Yes  140
+## 30   2nd Female Adult      Yes   80
+## 31   3rd Female Adult      Yes   76
+## 32  Crew Female Adult      Yes   20</code></pre>
+<p>To inspect elements of a column (or a vector), we have other functions. Note, we have to input a column (or a vector):</p>
+<ul>
+<li><code>table()</code> returns a table of frequency</li>
+<li><code>unique()</code> returns unique values</li>
+<li><code>summary()</code> returns summary statistics of a column</li>
+</ul>
+<p>Let’s take these functions and use them on <strong>Class</strong> column in <strong>titatic</strong> data frame:</p>
+<pre class="r"><code>table(titanic$Class)</code></pre>
+<pre><code>## 
+##  1st  2nd  3rd Crew 
+##    8    8    8    8</code></pre>
+<pre class="r"><code>unique(titanic$Class) #Levels because column Class is factor type (a type of character)</code></pre>
+<pre><code>## [1] 1st  2nd  3rd  Crew
+## Levels: 1st 2nd 3rd Crew</code></pre>
+<pre class="r"><code>summary(titanic$Class)</code></pre>
+<pre><code>##  1st  2nd  3rd Crew 
+##    8    8    8    8</code></pre>
+</div>
+</div>
+<div id="basic-graphs-with-ggplot2" class="section level1">
+<h1>Basic Graphs with ggplot2</h1>
+<p><code>ggplot2</code> is a data visualization package for R, created by Hadley Wickham in 2005. <code>ggplot2</code> is based on the <strong>Grammar of Graphics</strong>, a general scheme for data visualization which breaks up graphs into components. Before going further, install and load the package:</p>
+<pre><code>install.packages(&quot;ggplot2&quot;) # or tidyverse package that include ggplot2
+library(ggplot2) # loads package</code></pre>
+<div id="components-of-ggplot2-graphs" class="section level3">
+<h3>Components of ggplot2 Graphs</h3>
+<p>There are 6 components to any graphic, based on grammar of graphics. In this week, we only touch on compmenents 1st, 2nd and 6th.</p>
+<ol style="list-style-type: decimal">
+<li><strong>data</strong>: What you want to visualize, including variables (columns) to be mapped to aesthetic attributes.</li>
+<li><strong>geom</strong>: Geometric objects that are drawn to represent the data: bars, lines, points, etc.</li>
+<li><strong>stats</strong>: Statistical transformations of the data, such as binning or averaging.</li>
+<li><strong>scales</strong>: Map values in the data space to values in an aesthetic space (color, shape, size…)</li>
+<li><strong>coord</strong>: Coordinate system; provides axes and gridlines to make it possible to read the graph.</li>
+<li><strong>facets</strong>: Breaking up the data into subsets, to be displayed independently on a grid.</li>
+</ol>
+</div>
+<div id="types-of-plots-with-ggplot2" class="section level3">
+<h3>Types of Plots With ggplot2</h3>
+<ol style="list-style-type: decimal">
+<li>For <strong>one categorical variable</strong>, use barplot (<code>geom_bar()</code> in <code>ggplot2</code>)</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = cyl)) + # data component
+  geom_bar() # geom component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-16-1.png" width="672" /> </p>
+<ol start="2" style="list-style-type: decimal">
+<li>For <strong>one continuous variable</strong>, use histogram (<code>geom_histogram()</code> in <code>ggplot2</code>)</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = mpg)) +  # data component
+  geom_histogram() # geom component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>For <strong>two categorical variables</strong>, use barplot for one variable and label another variable with colors (<code>geom_bar(aes(col=”name_of_another_data_column”)</code> in <code>ggplot2</code>)</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +  # data component
+  geom_bar() # geom component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-18-1.png" width="672" /> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>For <strong>one categorical and one continuous variables</strong>, use boxplot (<code>geom_boxplot()</code> in <code>ggplot2</code> – There are also swarmplot, stripplot, violinplot)</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
+  geom_boxplot() # geom component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>For <strong>two continuous variables</strong>, use scatter plot (<code>geom_point()</code> in <code>ggplot2</code>)</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
+  geom_point() # geom component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-20-1.png" width="672" /> </p>
+<ol start="6" style="list-style-type: decimal">
+<li>For <strong>two categorical and one continuous variables</strong>, use boxplot and use color or facet to visualize another categorical variable</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
+  geom_boxplot() +  # geom component
+  facet_wrap(~factor(gear)) # facet component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<ol start="7" style="list-style-type: decimal">
+<li>For <strong>two Continuous and one categorical variables</strong>, use scatterplot and use color or facet</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
+  geom_point()+ # geom component
+  facet_wrap(~factor(cyl)) # facet component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-22-1.png" width="672" /> </p>
+<ol start="8" style="list-style-type: decimal">
+<li>For <strong>three continuous variables</strong>, use 3D scatterplot which is not available in ggplot2, but it is possible to use different color, shape, and size to visualize the third continuous variable.</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg, size = disp)) +
+  geom_point(alpha = .5) # alpha controls transparency of points</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="apply-a-different-theme" class="section level3">
+<h3>Apply a Different Theme</h3>
+<p>There are a few prepared themes to change the look of your plots in <code>ggplot2</code></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg, color = disp)) +
+  geom_point() + 
+  theme_bw() # applies black and white theme</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
+</div>

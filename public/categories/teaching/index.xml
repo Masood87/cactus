@@ -6,10 +6,19 @@
     <description>Recent content in Teaching on Masood Sadat Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 2: On Data Frames and Intro to ggplot2 For Making Graphs</title>
+      <link>/post/week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs/</guid>
+      <description>Data Frames Data Frame Index Create New Column/Variable Inspect Data Frames  Basic Graphs with ggplot2 Components of ggplot2 Graphs Types of Plots With ggplot2 Apply a Different Theme    Data Frames Data frames are the most widely used data object in R. A data frame is a collection of vectors of the same length, which is also called columns. Each column have their own data type (e.</description>
+    </item>
     
     <item>
       <title>Week 1: Introduction to R</title>

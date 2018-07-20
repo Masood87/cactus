@@ -1,0 +1,235 @@
+---
+title: 'Week 2: On Data Frames and Intro to ggplot2 For Making Graphs'
+author: Masood Sadat
+date: '2018-07-19'
+categories:
+  - teaching
+tags:
+  - r tips
+slug: week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs
+output:
+  blogdown::html_page:
+    toc: yes
+description: Week 2 of Data Analysis with R; Get comfortable working with data frames. Learn the basics of grammar of graphics, understand appropriate graphs, and start making graphs with ggplot2.
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE, fig.height = 3)
+```
+
+# Data Frames
+
+**Data frames** are the most widely used data object in R. A data frame is a collection of vectors of the same length, which is also called columns. Each column have their own data type (e.g. numeric, character, etc.). Data frames resemble spread sheets (e.g. MS Excel), and this is the reason for their widespread use.
+
+### Data Frame Index
+
+Column(s) or row(s) of a data frame can be called using indeces, i.e. "[ ]". For example, if we have a data frame, df:
+
+```{r}
+df <- data.frame(numbers = 1:5, 
+                 cities = c("Kabul", "Mazar", "Herat", "Jalalabad", "Kandahar"), 
+                 population = c(4.635, 0.693, 1.780, 0.356, 0.557))
+```
+
+```{r include=FALSE}
+library(tidyverse)
+df <- mutate(df, cities = as.character(df$cities))
+```
+
+```{r}
+df
+```
+
+then `df[2, 2]` selects the intersection of first row and the first column of the dataset.
+
+```{r}
+df[2, 2]
+```
+
+`df[2, ]` selects the entire second row (and returns a data frame!),
+
+```{r}
+df[2, ]
+```
+
+`df[, 2]` selects the second column (and returns a vector),
+
+```{r}
+df[, 2]
+```
+
+`df[-4, ]` selects all columns and rows in **df** data frame, except for the 4th row (and returns a data frame!)
+
+```{r}
+df[-4, ]
+```
+
+and `df[c(2,3,1), ]` selects first three rows but reorders them (returns a data frame with 3 rows and 5 columns).
+
+```{r}
+df[c(2,3,1), ]
+```
+
+There is also the "\$" which is known as the component selector, that selects one column of a data frame. For example, `df$cities` selects column cities (and returns a vector).
+
+```{r}
+df$cities
+```
+
+### Create New Column/Variable
+
+We definted data frames as a collection of same length vectors. It is possible to add a vector of same lenght as another column or variable to a data frame. For example, here we add a new column to data frame **df** which was created earlier. We can do so in multiple ways, which only two are explored here. One way is to use `data.frame()` function.
+
+```{r}
+df
+data.frame(df, new_column = c(T,T,F,F,T))
+```
+
+The second way is to use component selector \$.
+
+```{r}
+df$new_column <- c(T,T,F,F,T)
+df
+```
+
+### Inspect Data Frames
+
+Some useful functions for working with data frames:
+
+* `nrow()`: number of rows
+* `ncol()`: number of columns
+* `dim()`: dimension
+* `str()`: returns the structure of the data frame
+* `colnames()`: returns the column names of the data frame
+* `rownames()`: returns the row names (if any) of the data frame
+* `summary()`: returns summary statistics
+* `head()`: returns the first 6 observations of the data frame
+* `tail()`: returns the last 6 observations of the data frame
+
+Let's use the above functions on **titanic** data which is available in the R memory. First, I turn the **titanic** data into a data frame,
+
+```{r}
+titanic <- as.data.frame(Titanic)
+```
+
+Now, we use the functions on titanic data frame and learn about this data set.
+
+```{r}
+nrow(titanic)
+ncol(titanic)
+dim(titanic)
+str(titanic)
+colnames(titanic)
+rownames(titanic)
+summary(titanic)
+head(titanic)
+tail(titanic)
+```
+
+To inspect elements of a column (or a vector), we have other functions. Note, we have to input a column (or a vector):
+
+* `table()` returns a table of frequency
+* `unique()` returns unique values
+* `summary()` returns summary statistics of a column
+
+Let's take these functions and use them on **Class** column in **titatic** data frame:
+
+```{r}
+table(titanic$Class)
+unique(titanic$Class) #Levels because column Class is factor type (a type of character)
+summary(titanic$Class)
+```
+
+# Basic Graphs with ggplot2
+
+`ggplot2` is a data visualization package for R, created by Hadley Wickham in 2005. `ggplot2` is based on the **Grammar of Graphics**, a general scheme for data visualization which breaks up graphs into components. Before going further, install and load the package:
+
+```
+install.packages("ggplot2") # or tidyverse package that include ggplot2
+library(ggplot2) # loads package
+```
+
+### Components of ggplot2 Graphs
+
+There are 6 components to any graphic, based on grammar of graphics. In this week, we only touch on compmenents 1st, 2nd and 6th.
+
+1. **data**: What you want to visualize, including variables (columns) to be mapped to aesthetic attributes.
+2. **geom**: Geometric objects that are drawn to represent the data: bars, lines, points, etc.
+3. **stats**: Statistical transformations of the data, such as binning or averaging.
+4. **scales**: Map values in the data space to values in an aesthetic space (color, shape, size…)
+5. **coord**: Coordinate system; provides axes and gridlines to make it possible to read the graph.
+6. **facets**: Breaking up the data into subsets, to be displayed independently on a grid.
+
+### Types of Plots With ggplot2
+
+1. For **one categorical variable**, use barplot (`geom_bar()` in `ggplot2`)
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = cyl)) + # data component
+  geom_bar() # geom component
+```
+\newpage
+
+2. For **one continuous variable**, use histogram (`geom_histogram()` in `ggplot2`)
+
+```{r fig.height=3, message=FALSE, warning=FALSE}
+ggplot(mtcars, aes(x = mpg)) +  # data component
+  geom_histogram() # geom component
+```
+
+3. For **two categorical variables**, use barplot for one variable and label another variable with colors (`geom_bar(aes(col=”name_of_another_data_column”)` in `ggplot2`)
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +  # data component
+  geom_bar() # geom component
+```
+\newpage
+
+4. For **one categorical and one continuous variables**, use boxplot (`geom_boxplot()` in `ggplot2` -- There are also swarmplot, stripplot, violinplot)
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
+  geom_boxplot() # geom component
+```
+
+5. For **two continuous variables**, use scatter plot (`geom_point()` in `ggplot2`)
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
+  geom_point() # geom component
+```
+\newpage
+
+6. For **two categorical and one continuous variables**, use boxplot and use color or facet to visualize another categorical variable
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
+  geom_boxplot() +  # geom component
+  facet_wrap(~factor(gear)) # facet component
+```
+
+7. For **two Continuous and one categorical variables**, use scatterplot and use color or facet
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
+  geom_point()+ # geom component
+  facet_wrap(~factor(cyl)) # facet component
+```
+\newpage
+
+8. For **three continuous variables**, use 3D scatterplot which is not available in ggplot2, but it is possible to use different color, shape, and size to visualize the third continuous variable.
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = wt, y = mpg, size = disp)) +
+  geom_point(alpha = .5) # alpha controls transparency of points
+```
+
+### Apply a Different Theme
+
+There are a few prepared themes to change the look of your plots in `ggplot2`
+
+```{r fig.height=3}
+ggplot(mtcars, aes(x = wt, y = mpg, color = disp)) +
+  geom_point() + 
+  theme_bw() # applies black and white theme
+```
