@@ -7,6 +7,9 @@ categories:
 tags:
   - r tips
 slug: week-1-introduction-to-r
+output:
+  blogdown::html_page:
+    toc: yes
 description: Week 1 of Data Analysis with R; Commence first steps with R using RStudio.
   Learn about data types and object types in R, and begin using these object types.
 ---

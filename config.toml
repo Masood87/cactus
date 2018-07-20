@@ -75,7 +75,7 @@ hasCJKLanguage = false
 [social]
 	twitter-square = "https://www.twitter.com/masood87r"
 	github-square = "https://www.github.com/masood87"
-	linkedin-square = "https://www.linkedin.com/in/masood-sadat-ab502a57/"
+	linkedin-square = "https://www.linkedin.com/in/masoood/"
 
 
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]

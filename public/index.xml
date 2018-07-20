@@ -26,9 +26,7 @@
       <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/posts/week-1-introduction-to-r/</guid>
-      <description>R and RStudio R is an opern-source programming language for statistical analysis. Being open-source, unlike similar software such as Stata, SAS and SPSS, it is free to use. R was created in 1994 and it has become arguably the most popular language for statistical analysis.
-RStudio is the most popular graphical user interface (GUI) for R which is developed by a company with the same name.
-Read more about R and RStudio here: R, RStudio Install R and RStudio here: install R, install RStudio</description>
+      <description>R and RStudio RStudio interface Basics Arithmetic Assignment Data types in R Data objects in R  Vectors Vectors Arithmetic Vector index  Matrices Matrix index Matrix Arithmetic Joining matrices  Data frames Creating data frame Data frame index Column and Row Names  Lists Relational Operators   R and RStudio R is an opern-source programming language for statistical analysis. Being open-source, unlike similar software such as Stata, SAS and SPSS, it is free to use.</description>
     </item>
     
     <item>
