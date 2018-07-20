@@ -1,13 +1,14 @@
 ---
-title: 'Day 1: Introduction to R'
+title: 'Week 1: Introduction to R'
 author: Masood Sadat
 date: '2018-07-12'
-slug: day-1-introduction-to-r
 categories:
   - teaching
 tags:
   - r tips
-description: Commence first steps with R using RStudio. Learn about data types and object types in R, and begin using these object types.
+slug: week-1-introduction-to-r
+description: Week 1 of Data Analysis with R; Commence first steps with R using RStudio.
+  Learn about data types and object types in R, and begin using these object types.
 ---
 
 # R and RStudio
