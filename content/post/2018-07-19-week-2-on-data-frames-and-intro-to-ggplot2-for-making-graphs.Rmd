@@ -10,7 +10,7 @@ slug: week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs
 output:
   blogdown::html_page:
     toc: yes
-description: Week 2 of Data Analysis with R; Get comfortable working with data frames. Learn the basics of grammar of graphics, understand appropriate graphs, and start making graphs with ggplot2.
+description: Week 2 of Data Analysis with R- Get comfortable working with data frames. Learn the basics of grammar of graphics, understand appropriate graphs, and start making graphs with ggplot2.
 ---
 
 ```{r include=FALSE}
