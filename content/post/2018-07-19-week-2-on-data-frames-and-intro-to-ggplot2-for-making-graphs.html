@@ -198,55 +198,68 @@ library(ggplot2) # loads package</code></pre>
 <div id="types-of-plots-with-ggplot2" class="section level3">
 <h3>Types of Plots With ggplot2</h3>
 <ol style="list-style-type: decimal">
-<li>For <strong>one categorical variable</strong>, use barplot (<code>geom_bar()</code> in <code>ggplot2</code>)</li>
+<li>For <strong>one categorical variable</strong>, use barplot</li>
 </ol>
 <pre class="r"><code>ggplot(mtcars, aes(x = cyl)) + # data component
   geom_bar() # geom component</code></pre>
 <p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-16-1.png" width="672" /> </p>
 <ol start="2" style="list-style-type: decimal">
-<li>For <strong>one continuous variable</strong>, use histogram (<code>geom_histogram()</code> in <code>ggplot2</code>)</li>
+<li>For <strong>one continuous variable</strong>, use histogram or density plot</li>
 </ol>
 <pre class="r"><code>ggplot(mtcars, aes(x = mpg)) +  # data component
   geom_histogram() # geom component</code></pre>
 <p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = mpg)) +
+  geom_density()</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
-<li>For <strong>two categorical variables</strong>, use barplot for one variable and label another variable with colors (<code>geom_bar(aes(col=”name_of_another_data_column”)</code> in <code>ggplot2</code>)</li>
+<li>For <strong>two categorical variables</strong>, use barplot for one variable and label another variable with colors.</li>
 </ol>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +  # data component
   geom_bar() # geom component</code></pre>
-<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-18-1.png" width="672" /> </p>
-<ol start="4" style="list-style-type: decimal">
-<li>For <strong>one categorical and one continuous variables</strong>, use boxplot (<code>geom_boxplot()</code> in <code>ggplot2</code> – There are also swarmplot, stripplot, violinplot)</li>
-</ol>
-<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
-  geom_boxplot() # geom component</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>There is a <strong>position</strong> argument inside <code>geom_bar()</code> that allows to create <strong>fill</strong> and <strong>dodge</strong> barplots. See the follow examples</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +
+  geom_bar(position = &quot;fill&quot;)</code></pre>
 <p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +
+  geom_bar(position = &quot;dodge&quot;)</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-19-2.png" width="672" /> </p>
+<ol start="4" style="list-style-type: decimal">
+<li>For <strong>one categorical and one continuous variables</strong>, use boxplot or density plot (There are also swarmplot, stripplot, violinplot)</li>
+</ol>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # Note continous variable is on y axis
+  geom_boxplot()</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = mpg, fill = factor(cyl))) + # Note continuous variable is on x axis
+  geom_density(alpha = .5) # using alpha we assign 50% color transparency</code></pre>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
-<li>For <strong>two continuous variables</strong>, use scatter plot (<code>geom_point()</code> in <code>ggplot2</code>)</li>
+<li>For <strong>two continuous variables</strong>, use scatter plot</li>
 </ol>
 <pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
   geom_point() # geom component</code></pre>
-<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-20-1.png" width="672" /> </p>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-21-1.png" width="672" /> </p>
 <ol start="6" style="list-style-type: decimal">
-<li>For <strong>two categorical and one continuous variables</strong>, use boxplot and use color or facet to visualize another categorical variable</li>
+<li>For <strong>two categorical and one continuous variables</strong>, use boxplot and use color or facet to visualize another categorical variable. It is also possible to use density plot <code>geom_density()</code> with facets (see above for example of density plot).</li>
 </ol>
-<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
-  geom_boxplot() +  # geom component
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl), y = mpg, col = factor(gear))) +
+  geom_boxplot() +
   facet_wrap(~factor(gear)) # facet component</code></pre>
-<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>For <strong>two Continuous and one categorical variables</strong>, use scatterplot and use color or facet</li>
 </ol>
-<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
-  geom_point()+ # geom component
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
   facet_wrap(~factor(cyl)) # facet component</code></pre>
-<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-22-1.png" width="672" /> </p>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-23-1.png" width="672" /> </p>
 <ol start="8" style="list-style-type: decimal">
 <li>For <strong>three continuous variables</strong>, use 3D scatterplot which is not available in ggplot2, but it is possible to use different color, shape, and size to visualize the third continuous variable.</li>
 </ol>
 <pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg, size = disp)) +
   geom_point(alpha = .5) # alpha controls transparency of points</code></pre>
-<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 <div id="apply-a-different-theme" class="section level3">
 <h3>Apply a Different Theme</h3>
@@ -254,6 +267,6 @@ library(ggplot2) # loads package</code></pre>
 <pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg, color = disp)) +
   geom_point() + 
   theme_bw() # applies black and white theme</code></pre>
-<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="/post/2018-07-19-week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 </div>

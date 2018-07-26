@@ -162,7 +162,7 @@ There are 6 components to any graphic, based on grammar of graphics. In this wee
 
 ### Types of Plots With ggplot2
 
-1. For **one categorical variable**, use barplot (`geom_bar()` in `ggplot2`)
+1. For **one categorical variable**, use barplot
 
 ```{r fig.height=3}
 ggplot(mtcars, aes(x = cyl)) + # data component
@@ -170,29 +170,42 @@ ggplot(mtcars, aes(x = cyl)) + # data component
 ```
 \newpage
 
-2. For **one continuous variable**, use histogram (`geom_histogram()` in `ggplot2`)
+2. For **one continuous variable**, use histogram or density plot
 
 ```{r fig.height=3, message=FALSE, warning=FALSE}
 ggplot(mtcars, aes(x = mpg)) +  # data component
   geom_histogram() # geom component
+ggplot(mtcars, aes(x = mpg)) +
+  geom_density()
 ```
 
-3. For **two categorical variables**, use barplot for one variable and label another variable with colors (`geom_bar(aes(col=”name_of_another_data_column”)` in `ggplot2`)
+3. For **two categorical variables**, use barplot for one variable and label another variable with colors. 
 
 ```{r fig.height=3}
 ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +  # data component
   geom_bar() # geom component
 ```
+
+There is a **position** argument inside `geom_bar()` that allows to create **fill** and **dodge** barplots. See the follow examples
+
+```{r}
+ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +
+  geom_bar(position = "fill")
+ggplot(mtcars, aes(x = factor(gear), fill = factor(cyl))) +
+  geom_bar(position = "dodge")
+```
 \newpage
 
-4. For **one categorical and one continuous variables**, use boxplot (`geom_boxplot()` in `ggplot2` -- There are also swarmplot, stripplot, violinplot)
+4. For **one categorical and one continuous variables**, use boxplot or density plot (There are also swarmplot, stripplot, violinplot)
 
 ```{r fig.height=3}
-ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
-  geom_boxplot() # geom component
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # Note continous variable is on y axis
+  geom_boxplot()
+ggplot(mtcars, aes(x = mpg, fill = factor(cyl))) + # Note continuous variable is on x axis
+  geom_density(alpha = .5) # using alpha we assign 50% color transparency
 ```
 
-5. For **two continuous variables**, use scatter plot (`geom_point()` in `ggplot2`)
+5. For **two continuous variables**, use scatter plot
 
 ```{r fig.height=3}
 ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
@@ -200,19 +213,19 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
 ```
 \newpage
 
-6. For **two categorical and one continuous variables**, use boxplot and use color or facet to visualize another categorical variable
+6. For **two categorical and one continuous variables**, use boxplot and use color or facet to visualize another categorical variable. It is also possible to use density plot `geom_density()` with facets (see above for example of density plot).
 
 ```{r fig.height=3}
-ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +  # data component
-  geom_boxplot() +  # geom component
+ggplot(mtcars, aes(x = factor(cyl), y = mpg, col = factor(gear))) +
+  geom_boxplot() +
   facet_wrap(~factor(gear)) # facet component
 ```
 
 7. For **two Continuous and one categorical variables**, use scatterplot and use color or facet
 
 ```{r fig.height=3}
-ggplot(mtcars, aes(x = wt, y = mpg)) +  # data component
-  geom_point()+ # geom component
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
   facet_wrap(~factor(cyl)) # facet component
 ```
 \newpage
