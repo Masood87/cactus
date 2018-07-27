@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/week-3-data-manipulation-with-dplyr/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/week-2-on-data-frames-and-intro-to-ggplot2-for-making-graphs/</loc>
     <lastmod>2018-07-19T00:00:00+00:00</lastmod>
   </url>
@@ -110,13 +115,13 @@
   </url>
   
   <url>
-    <loc>/categories/git/</loc>
+    <loc>/tags/git/</loc>
     <lastmod>2018-06-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/git/</loc>
+    <loc>/categories/git/</loc>
     <lastmod>2018-06-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -129,13 +134,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -146,14 +151,14 @@
   </url>
   
   <url>
-    <loc>/categories/r-tips/</loc>
-    <lastmod>2018-06-14T00:00:00+00:00</lastmod>
+    <loc>/tags/r-tips/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/r-tips/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <loc>/categories/r-tips/</loc>
+    <lastmod>2018-06-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -165,7 +170,7 @@
   
   <url>
     <loc>/categories/teaching/</loc>
-    <lastmod>2018-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

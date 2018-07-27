@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="Week 3: Data Manipulation with dplyr"/>
+  <meta name="twitter:description" content="About tidyverse There are thousands of packages developed by even greater number of developers that provide new features or improve R’s features. One of the most influential and beneficial set of packages is tidyverse which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important tidyverse packages:
+dplyr for data manipulation and data summary ggplot2 for data visualization tidyr for data reshape readr for fast and friendly data import/export stringr for string manipulation  In this post we forcus on dplyr which is perhaps the most useful of all tidyverse packages."/>
+  
+    <meta name="twitter:site" content="@masood87r"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Masood Sadat"/>
+  
+
+
+
+		
+		<meta name="author" content="Masood Sadat">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.40.2" />
+		<title>Week 3: Data Manipulation with dplyr &middot; Masood Sadat Blog</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="Masood Sadat Blog" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">RSS</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        Week 3: Data Manipulation with dplyr
+                    </h1>
+                    <h2 class="headline">
+                    Jul 27, 2018 00:00
+                    · 1324 words
+                    · 7 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="/tags/r-tips">r tips</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                
+                <section id="post-body">
+                    <div id="about-tidyverse" class="section level1">
+<h1>About tidyverse</h1>
+<p>There are thousands of packages developed by even greater number of developers that provide new features or improve R’s features. One of the most influential and beneficial set of packages is <a href="https://www.tidyverse.org"><strong>tidyverse</strong></a> which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important <strong>tidyverse</strong> packages:</p>
+<ol style="list-style-type: decimal">
+<li><strong>dplyr</strong> for data manipulation and data summary</li>
+<li><strong>ggplot2</strong> for data visualization</li>
+<li><strong>tidyr</strong> for data reshape</li>
+<li><strong>readr</strong> for fast and friendly data import/export</li>
+<li><strong>stringr</strong> for string manipulation</li>
+</ol>
+<p>In this post we forcus on <strong>dplyr</strong> which is perhaps the most useful of all tidyverse packages.</p>
+</div>
+<div id="about-dplyr" class="section level1">
+<h1>About dplyr</h1>
+<p><strong>dplyr</strong> package provides a set of functions that makes a data manipulation extremely easy. There are many functions within <strong>dplyr</strong> package, but we will focus on a handful of them that are considered MUST.</p>
+<ul>
+<li><code>select()</code> chooses variables/columns</li>
+<li><code>slice()</code> chooses observations/rows</li>
+<li><code>filter()</code> chooses observations/rows based on a logical condition</li>
+<li><code>mutate()</code> adds new variables that are functions of existing ones</li>
+<li><code>arrange()</code> sorts the data frame based on a column’s value</li>
+<li><code>summarize()</code> reduces data frame to a single summary</li>
+<li><code>group_by()</code> changes the ordering of the observations/rows</li>
+</ul>
+<pre class="r"><code>library(dplyr) #library(tidyverse)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+</div>
+<div id="pipe" class="section level1">
+<h1>Pipe</h1>
+<pre class="r"><code>Titanic %&gt;% data.frame() # data.frame(Titanic)</code></pre>
+<pre><code>##    Class    Sex   Age Survived Freq
+## 1    1st   Male Child       No    0
+## 2    2nd   Male Child       No    0
+## 3    3rd   Male Child       No   35
+## 4   Crew   Male Child       No    0
+## 5    1st Female Child       No    0
+## 6    2nd Female Child       No    0
+## 7    3rd Female Child       No   17
+## 8   Crew Female Child       No    0
+## 9    1st   Male Adult       No  118
+## 10   2nd   Male Adult       No  154
+## 11   3rd   Male Adult       No  387
+## 12  Crew   Male Adult       No  670
+## 13   1st Female Adult       No    4
+## 14   2nd Female Adult       No   13
+## 15   3rd Female Adult       No   89
+## 16  Crew Female Adult       No    3
+## 17   1st   Male Child      Yes    5
+## 18   2nd   Male Child      Yes   11
+## 19   3rd   Male Child      Yes   13
+## 20  Crew   Male Child      Yes    0
+## 21   1st Female Child      Yes    1
+## 22   2nd Female Child      Yes   13
+## 23   3rd Female Child      Yes   14
+## 24  Crew Female Child      Yes    0
+## 25   1st   Male Adult      Yes   57
+## 26   2nd   Male Adult      Yes   14
+## 27   3rd   Male Adult      Yes   75
+## 28  Crew   Male Adult      Yes  192
+## 29   1st Female Adult      Yes  140
+## 30   2nd Female Adult      Yes   80
+## 31   3rd Female Adult      Yes   76
+## 32  Crew Female Adult      Yes   20</code></pre>
+<div id="select" class="section level2">
+<h2>Select</h2>
+<pre class="r"><code>Titanic %&gt;% 
+data.frame() %&gt;% 
+select(Survived, Freq)</code></pre>
+<pre><code>##    Survived Freq
+## 1        No    0
+## 2        No    0
+## 3        No   35
+## 4        No    0
+## 5        No    0
+## 6        No    0
+## 7        No   17
+## 8        No    0
+## 9        No  118
+## 10       No  154
+## 11       No  387
+## 12       No  670
+## 13       No    4
+## 14       No   13
+## 15       No   89
+## 16       No    3
+## 17      Yes    5
+## 18      Yes   11
+## 19      Yes   13
+## 20      Yes    0
+## 21      Yes    1
+## 22      Yes   13
+## 23      Yes   14
+## 24      Yes    0
+## 25      Yes   57
+## 26      Yes   14
+## 27      Yes   75
+## 28      Yes  192
+## 29      Yes  140
+## 30      Yes   80
+## 31      Yes   76
+## 32      Yes   20</code></pre>
+</div>
+<div id="slice" class="section level2">
+<h2>Slice</h2>
+<pre class="r"><code>Titanic %&gt;% 
+data.frame() %&gt;% 
+slice(1:10)</code></pre>
+<pre><code>##    Class    Sex   Age Survived Freq
+## 1    1st   Male Child       No    0
+## 2    2nd   Male Child       No    0
+## 3    3rd   Male Child       No   35
+## 4   Crew   Male Child       No    0
+## 5    1st Female Child       No    0
+## 6    2nd Female Child       No    0
+## 7    3rd Female Child       No   17
+## 8   Crew Female Child       No    0
+## 9    1st   Male Adult       No  118
+## 10   2nd   Male Adult       No  154</code></pre>
+</div>
+<div id="filter" class="section level2">
+<h2>Filter</h2>
+<pre class="r"><code>Titanic %&gt;% 
+data.frame() %&gt;% 
+filter(Age == &quot;Child&quot;)</code></pre>
+<pre><code>##    Class    Sex   Age Survived Freq
+## 1    1st   Male Child       No    0
+## 2    2nd   Male Child       No    0
+## 3    3rd   Male Child       No   35
+## 4   Crew   Male Child       No    0
+## 5    1st Female Child       No    0
+## 6    2nd Female Child       No    0
+## 7    3rd Female Child       No   17
+## 8   Crew Female Child       No    0
+## 9    1st   Male Child      Yes    5
+## 10   2nd   Male Child      Yes   11
+## 11   3rd   Male Child      Yes   13
+## 12  Crew   Male Child      Yes    0
+## 13   1st Female Child      Yes    1
+## 14   2nd Female Child      Yes   13
+## 15   3rd Female Child      Yes   14
+## 16  Crew Female Child      Yes    0</code></pre>
+</div>
+<div id="mutate" class="section level2">
+<h2>Mutate</h2>
+<p>Creates a new variable and adds it to the data frame.</p>
+<pre class="r"><code>mtcars %&gt;% 
+mutate(model = rownames(mtcars))</code></pre>
+<pre><code>##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb               model
+## 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4           Mazda RX4
+## 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4       Mazda RX4 Wag
+## 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1          Datsun 710
+## 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1      Hornet 4 Drive
+## 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2   Hornet Sportabout
+## 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1             Valiant
+## 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4          Duster 360
+## 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2           Merc 240D
+## 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2            Merc 230
+## 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4            Merc 280
+## 11 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4           Merc 280C
+## 12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3          Merc 450SE
+## 13 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3          Merc 450SL
+## 14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3         Merc 450SLC
+## 15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4  Cadillac Fleetwood
+## 16 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4 Lincoln Continental
+## 17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4   Chrysler Imperial
+## 18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1            Fiat 128
+## 19 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2         Honda Civic
+## 20 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1      Toyota Corolla
+## 21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1       Toyota Corona
+## 22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2    Dodge Challenger
+## 23 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2         AMC Javelin
+## 24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4          Camaro Z28
+## 25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2    Pontiac Firebird
+## 26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1           Fiat X1-9
+## 27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2       Porsche 914-2
+## 28 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2        Lotus Europa
+## 29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4      Ford Pantera L
+## 30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6        Ferrari Dino
+## 31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8       Maserati Bora
+## 32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2          Volvo 142E</code></pre>
+</div>
+</div>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fpost%2fweek-3-data-manipulation-with-dplyr%2f - Week%203%3a%20Data%20Manipulation%20with%20dplyr by @masood87r"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'masoodsadat'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/masood87">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="">
+        <i class="fa fa-ignorefiles"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.linkedin.com/in/masoood/">
+        <i class="fa fa-linkedin-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/masood87r">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Masood Sadat
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87289893-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+    </body>
+</html>

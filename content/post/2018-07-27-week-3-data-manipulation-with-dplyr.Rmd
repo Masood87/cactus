@@ -1,0 +1,83 @@
+---
+title: 'Week 3: Data Manipulation with dplyr'
+author: Masood Sadat
+date: '2018-07-27'
+slug: week-3-data-manipulation-with-dplyr
+categories:
+  - teaching
+tags:
+  - r tips
+---
+
+# About tidyverse
+
+There are thousands of packages developed by even greater number of developers that provide new features or improve R’s features. One of the most influential and beneficial set of packages is [**tidyverse**](https://www.tidyverse.org) which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important **tidyverse** packages:
+
+1. **dplyr** for data manipulation and data summary
+2. **ggplot2** for data visualization
+3. **tidyr** for data reshape
+4. **readr** for fast and friendly data import/export
+5. **stringr** for string manipulation
+
+In this post we forcus on **dplyr** which is perhaps the most useful of all tidyverse packages.
+
+# About dplyr
+
+**dplyr** package provides a set of functions that makes a data manipulation extremely easy. There are many functions within **dplyr** package, but we will focus on a handful of them that are considered MUST.
+
+- `select()` chooses variables/columns
+- `slice()` chooses observations/rows
+- `filter()` chooses observations/rows based on a logical condition
+- `mutate()` adds new variables that are functions of existing ones
+- `arrange()` sorts the data frame based on a column's value
+- `summarize()` reduces data frame to a single summary
+- `group_by()` changes the ordering of the observations/rows
+
+```{r}
+library(dplyr) #library(tidyverse)
+```
+
+# Pipe 
+
+```{r}
+Titanic %>% data.frame() # data.frame(Titanic)
+```
+
+## Select
+
+```{r}
+Titanic %>% 
+data.frame() %>% 
+select(Survived, Freq)
+```
+
+## Slice
+
+```{r}
+Titanic %>% 
+data.frame() %>% 
+slice(1:10)
+```
+
+## Filter
+
+```{r}
+Titanic %>% 
+data.frame() %>% 
+filter(Age == "Child")
+```
+
+## Mutate
+
+Creates a new variable and adds it to the data frame.
+
+```{r}
+mtcars %>% 
+mutate(model = rownames(mtcars))
+```
+
+
+
+
+
+
