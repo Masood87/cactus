@@ -43,9 +43,23 @@ library(dplyr) #library(tidyverse)
 
 # Pipe Operator
 
+Before we jump to **dplyr** verbs, let's learn about pipe operator **%>%**. Pipe operator is arguably one of the most useful utilities in R language that is made available while loading **tidyverse**, **dplyr**, or **magrittr** packages. The aim of pipe operator is to read and understand R codes easier by expressing a complex operation into a sequence simple functions and steps.
+
+The pipe operator **%>%** takes a value or the result of an expression into the next function. For example, head of _mtcars_ data can be written in the following manner using the pipe operator, instead of `head(mtcars)`:
+
 ```{r}
-Titanic %>% data.frame() # data.frame(Titanic)
+mtcars %>% head() # str(mtcars)
 ```
+
+It is also possible to add multiple pipe operators, with each forwarding the result of previous expression into the next function. For example, here we turn **Titanic** data into a data frame and then print its head:
+
+```{r}
+Titanic %>%
+  data.frame() %>%
+  head()
+```
+
+If we were to not use pipe operators for the above cammand, we woud have to type `head(data.frame(Titanic))`, which is more difficult to read and understand.
 
 ## Select
 
