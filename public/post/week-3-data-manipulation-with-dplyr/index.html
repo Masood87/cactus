@@ -14,7 +14,7 @@
   
   
   <meta name="twitter:title" content="Week 3: Data Manipulation with dplyr"/>
-  <meta name="twitter:description" content="Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator %&gt;% as an alternative to nesting multiple functions, which improves readability of complex code."/>
+  <meta name="twitter:description" content="Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator as an alternative to nesting multiple functions, which improves readability of complex code."/>
   
     <meta name="twitter:site" content="@masood87r"/>
   
@@ -72,7 +72,7 @@
                     </h1>
                     <h2 class="headline">
                     Jul 27, 2018 00:00
-                    · 1347 words
+                    · 1358 words
                     · 7 minute read
                       <span class="tags">
                       
@@ -89,7 +89,20 @@
                   
                 
                 <section id="post-body">
-                    <div id="about-tidyverse" class="section level1">
+                    <div id="TOC">
+<ul>
+<li><a href="#about-tidyverse">About tidyverse</a></li>
+<li><a href="#about-dplyr">About dplyr</a></li>
+<li><a href="#pipe-operator">Pipe Operator</a><ul>
+<li><a href="#select">Select</a></li>
+<li><a href="#slice">Slice</a></li>
+<li><a href="#filter">Filter</a></li>
+<li><a href="#mutate">Mutate</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="about-tidyverse" class="section level1">
 <h1>About tidyverse</h1>
 <p>There are thousands of packages developed by even greater number of developers that provide new features or improve R’s features. One of the most influential and beneficial set of packages is <a href="https://www.tidyverse.org"><strong>tidyverse</strong></a> which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important <strong>tidyverse</strong> packages:</p>
 <ol style="list-style-type: decimal">
@@ -124,8 +137,8 @@
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div id="pipe" class="section level1">
-<h1>Pipe</h1>
+<div id="pipe-operator" class="section level1">
+<h1>Pipe Operator</h1>
 <pre class="r"><code>Titanic %&gt;% data.frame() # data.frame(Titanic)</code></pre>
 <pre><code>##    Class    Sex   Age Survived Freq
 ## 1    1st   Male Child       No    0

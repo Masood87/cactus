@@ -7,7 +7,10 @@ categories:
   - teaching
 tags:
   - r tips
-description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator %>% as an alternative to nesting multiple functions, which improves readability of complex code.
+output:
+  blogdown::html_page:
+    toc: yes
+description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator as an alternative to nesting multiple functions, which improves readability of complex code.
 ---
 
 # About tidyverse
@@ -38,7 +41,7 @@ In this post we forcus on **dplyr** which is perhaps the most useful of all tidy
 library(dplyr) #library(tidyverse)
 ```
 
-# Pipe 
+# Pipe Operator
 
 ```{r}
 Titanic %>% data.frame() # data.frame(Titanic)

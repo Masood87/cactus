@@ -7,10 +7,25 @@ categories:
   - teaching
 tags:
   - r tips
-description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator %>% as an alternative to nesting multiple functions, which improves readability of complex code.
+output:
+  blogdown::html_page:
+    toc: yes
+description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator as an alternative to nesting multiple functions, which improves readability of complex code.
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#about-tidyverse">About tidyverse</a></li>
+<li><a href="#about-dplyr">About dplyr</a></li>
+<li><a href="#pipe-operator">Pipe Operator</a><ul>
+<li><a href="#select">Select</a></li>
+<li><a href="#slice">Slice</a></li>
+<li><a href="#filter">Filter</a></li>
+<li><a href="#mutate">Mutate</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="about-tidyverse" class="section level1">
 <h1>About tidyverse</h1>
@@ -47,8 +62,8 @@ description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy da
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div id="pipe" class="section level1">
-<h1>Pipe</h1>
+<div id="pipe-operator" class="section level1">
+<h1>Pipe Operator</h1>
 <pre class="r"><code>Titanic %&gt;% data.frame() # data.frame(Titanic)</code></pre>
 <pre><code>##    Class    Sex   Age Survived Freq
 ## 1    1st   Male Child       No    0
