@@ -14,8 +14,7 @@
   
   
   <meta name="twitter:title" content="Week 3: Data Manipulation with dplyr"/>
-  <meta name="twitter:description" content="About tidyverse There are thousands of packages developed by even greater number of developers that provide new features or improve R’s features. One of the most influential and beneficial set of packages is tidyverse which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important tidyverse packages:
-dplyr for data manipulation and data summary ggplot2 for data visualization tidyr for data reshape readr for fast and friendly data import/export stringr for string manipulation  In this post we forcus on dplyr which is perhaps the most useful of all tidyverse packages."/>
+  <meta name="twitter:description" content="Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator %&gt;% as an alternative to nesting multiple functions, which improves readability of complex code."/>
   
     <meta name="twitter:site" content="@masood87r"/>
   
@@ -30,7 +29,7 @@ dplyr for data manipulation and data summary ggplot2 for data visualization tidy
 		
 		<meta name="author" content="Masood Sadat">
 		<meta name="description" content="Site Description">
-		<meta name="generator" content="Hugo 0.40.2" />
+		<meta name="generator" content="Hugo 0.40.3" />
 		<title>Week 3: Data Manipulation with dplyr &middot; Masood Sadat Blog</title>
 		<link rel="shortcut icon" href="/images/favicon.ico">
 		<link rel="stylesheet" href="/css/style.css">
@@ -73,7 +72,7 @@ dplyr for data manipulation and data summary ggplot2 for data visualization tidy
                     </h1>
                     <h2 class="headline">
                     Jul 27, 2018 00:00
-                    · 1324 words
+                    · 1347 words
                     · 7 minute read
                       <span class="tags">
                       
@@ -115,6 +114,7 @@ dplyr for data manipulation and data summary ggplot2 for data visualization tidy
 <li><code>group_by()</code> changes the ordering of the observations/rows</li>
 </ul>
 <pre class="r"><code>library(dplyr) #library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.2.5</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -204,17 +204,19 @@ select(Survived, Freq)</code></pre>
 <pre class="r"><code>Titanic %&gt;% 
 data.frame() %&gt;% 
 slice(1:10)</code></pre>
-<pre><code>##    Class    Sex   Age Survived Freq
-## 1    1st   Male Child       No    0
-## 2    2nd   Male Child       No    0
-## 3    3rd   Male Child       No   35
-## 4   Crew   Male Child       No    0
-## 5    1st Female Child       No    0
-## 6    2nd Female Child       No    0
-## 7    3rd Female Child       No   17
-## 8   Crew Female Child       No    0
-## 9    1st   Male Adult       No  118
-## 10   2nd   Male Adult       No  154</code></pre>
+<pre><code>## # A tibble: 10 x 5
+##    Class Sex    Age   Survived  Freq
+##    &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;
+##  1 1st   Male   Child No           0
+##  2 2nd   Male   Child No           0
+##  3 3rd   Male   Child No          35
+##  4 Crew  Male   Child No           0
+##  5 1st   Female Child No           0
+##  6 2nd   Female Child No           0
+##  7 3rd   Female Child No          17
+##  8 Crew  Female Child No           0
+##  9 1st   Male   Adult No         118
+## 10 2nd   Male   Adult No         154</code></pre>
 </div>
 <div id="filter" class="section level2">
 <h2>Filter</h2>

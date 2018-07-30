@@ -7,6 +7,7 @@ categories:
   - teaching
 tags:
   - r tips
+description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator %>% as an alternative to nesting multiple functions, which improves readability of complex code.
 ---
 
 # About tidyverse

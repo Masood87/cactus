@@ -7,6 +7,7 @@ categories:
   - teaching
 tags:
   - r tips
+description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator %>% as an alternative to nesting multiple functions, which improves readability of complex code.
 ---
 
 
@@ -36,6 +37,7 @@ tags:
 <li><code>group_by()</code> changes the ordering of the observations/rows</li>
 </ul>
 <pre class="r"><code>library(dplyr) #library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.2.5</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -125,17 +127,19 @@ select(Survived, Freq)</code></pre>
 <pre class="r"><code>Titanic %&gt;% 
 data.frame() %&gt;% 
 slice(1:10)</code></pre>
-<pre><code>##    Class    Sex   Age Survived Freq
-## 1    1st   Male Child       No    0
-## 2    2nd   Male Child       No    0
-## 3    3rd   Male Child       No   35
-## 4   Crew   Male Child       No    0
-## 5    1st Female Child       No    0
-## 6    2nd Female Child       No    0
-## 7    3rd Female Child       No   17
-## 8   Crew Female Child       No    0
-## 9    1st   Male Adult       No  118
-## 10   2nd   Male Adult       No  154</code></pre>
+<pre><code>## # A tibble: 10 x 5
+##    Class Sex    Age   Survived  Freq
+##    &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;
+##  1 1st   Male   Child No           0
+##  2 2nd   Male   Child No           0
+##  3 3rd   Male   Child No          35
+##  4 Crew  Male   Child No           0
+##  5 1st   Female Child No           0
+##  6 2nd   Female Child No           0
+##  7 3rd   Female Child No          17
+##  8 Crew  Female Child No           0
+##  9 1st   Male   Adult No         118
+## 10 2nd   Male   Adult No         154</code></pre>
 </div>
 <div id="filter" class="section level2">
 <h2>Filter</h2>
