@@ -70,7 +70,7 @@ Collect tweets from a specific user using `userTimeline()` function. Here, let's
 tw_masood <- userTimeline("masood87r", n = 5)
 ```
 
-Let's see the latest tweet.
+Let's see the latest tweet--it appears the tweet is long and it is cut.
 
 ```{r}
 tw_masood[[1]]
