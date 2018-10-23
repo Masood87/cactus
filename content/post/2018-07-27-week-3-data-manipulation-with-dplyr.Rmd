@@ -13,9 +13,13 @@ output:
 description: Week 3 of Data Analysis with R- Learn about dplyr verbs for easy data manipulation, grouping and summarizing. Master pipe operator as an alternative to nesting multiple functions, which improves readability of complex code.
 ---
 
+```{r warning=FALSE, message=FALSE, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE, fig.height = 3)
+```
+
 # About tidyverse
 
-There are thousands of packages developed by even greater number of developers that provide new features or improve R’s features. One of the most influential and beneficial set of packages is [**tidyverse**](https://www.tidyverse.org) which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important **tidyverse** packages:
+There are thousands of packages developed by equally large number of developers that provide new features or improve R’s features. One of the most influential and useful set of packages is [tidyverse](https://www.tidyverse.org) which is a collection of other packages for data manipulation, exploration and visualization. All tidyverse packages share an underlying design philosophy, grammar, and data structures. The following are some of the most important **tidyverse** packages:
 
 1. **dplyr** for data manipulation and data summary
 2. **ggplot2** for data visualization
@@ -25,33 +29,21 @@ There are thousands of packages developed by even greater number of developers t
 
 In this post we forcus on **dplyr** which is perhaps the most useful of all tidyverse packages.
 
-# About dplyr
+# Pipe Operator
 
-**dplyr** package provides a set of functions that makes a data manipulation extremely easy. There are many functions within **dplyr** package, but we will focus on a handful of them that are considered MUST.
-
-- `select()` chooses variables/columns
-- `slice()` chooses observations/rows
-- `filter()` chooses observations/rows based on a logical condition
-- `mutate()` adds new variables that are functions of existing ones
-- `arrange()` sorts the data frame based on a column's value
-- `summarize()` reduces data frame to a single summary
-- `group_by()` changes the ordering of the observations/rows
+But before we jump to **dplyr**, let's learn about pipe operator **%>%**. Pipe operator is arguably one of the most useful utilities in R language that is made available while loading any of the **tidyverse**, **dplyr**, or **magrittr** packages. The aim of pipe operator is to make reading and understanding R codes easier by expressing a complex operation into a sequence simple functions and steps.
 
 ```{r}
 library(dplyr) #library(tidyverse)
 ```
 
-# Pipe Operator
-
-Before we jump to **dplyr** verbs, let's learn about pipe operator **%>%**. Pipe operator is arguably one of the most useful utilities in R language that is made available while loading **tidyverse**, **dplyr**, or **magrittr** packages. The aim of pipe operator is to read and understand R codes easier by expressing a complex operation into a sequence simple functions and steps.
-
-The pipe operator **%>%** takes a value or the result of an expression into the next function. For example, head of _mtcars_ data can be written in the following manner using the pipe operator, instead of `head(mtcars)`:
+The pipe operator **%>%** takes a value or the result of an expression, and insert it into the next function. For example, head of _mtcars_ data can be written in the following manner using the pipe operator, instead of `head(mtcars)`:
 
 ```{r}
-mtcars %>% head() # str(mtcars)
+mtcars %>% head()
 ```
 
-It is also possible to add multiple pipe operators, with each forwarding the result of previous expression into the next function. For example, here we turn **Titanic** data into a data frame and then print its head:
+It is also possible to add multiple pipe operators, with each forwarding the result of previous expression into the next function. It is also common to break the line after each pipe operator to help with readability. Here, we turn **Titanic** data into a data frame and then print its head:
 
 ```{r}
 Titanic %>%
@@ -59,14 +51,47 @@ Titanic %>%
   head()
 ```
 
-If we were to not use pipe operators for the above cammand, we woud have to type `head(data.frame(Titanic))`, which is more difficult to read and understand.
+If we were to not use pipe operators for the above cammand, we woud have to type, which is more difficult to read and understand.
+
+```{r}
+head(data.frame(Titanic))
+```
+
+# About dplyr
+
+**dplyr** package provides a set of functions that makes data manipulation extremely easy. There are many functions within **dplyr** package, but we will focus on a handful of them that are considered a MUST.
+
+- `select()` chooses variables/columns
+- `slice()` chooses observations/rows
+- `filter()` chooses observations/rows based on a logical condition
+- `mutate()` adds new variables that are functions of existing ones
+- `arrange()` sorts the data frame based on a column's value
+- `summarize()` reduces data frame to a single summary statistic
+- `tally()` counts number of rows
+- `group_by()` changes the ordering of the observations/rows
 
 ## Select
 
+This function subsets a data frame by its columns or variables. `select()` takes name of data frame as its first argument, followed by columns we want to select or unselect.
+
 ```{r}
 Titanic %>% 
-data.frame() %>% 
-select(Survived, Freq)
+  data.frame() %>% 
+  select(Sex, Survived, Freq) %>%
+  head()
+```
+
+There are a few functions that allows selecting variables based on their name or location in a data frame. The following are a non-exhaustive list. See **select_helpers** in the help or type **?select_helpers** for a complete list.
+
+- `starts_with()` selects variables that their names start with a string specified inside this function
+- `ends_with()` selects variables that their names end with a string specified inside this function
+- `contains()` selects variables that their name contains a string specified inside this function
+
+```{r}
+Titanic %>%
+  data.frame() %>%
+  select(starts_with("s")) %>%
+  head()
 ```
 
 ## Slice

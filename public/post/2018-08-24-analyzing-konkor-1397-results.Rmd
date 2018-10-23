@@ -1,0 +1,50 @@
+---
+title: Analyzing Konkor 1397 (2018) Results
+author: Masood Sadat
+date: '2018-08-24'
+slug: analyzing-konkor-1397-results
+categories:
+  - afghanistan
+  - custom Analysis
+tags:
+  - visualization
+draft: true
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# library(highcharter)
+# library(tidyverse)
+# library(plotly)
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(treemap)
+
+konkor <- readRDS("~/Documents/PRSO/Programs/Data Analysis with R/week 4/konkor/konkor.RDS")
+
+students.by.province <- count(konkor, province)
+score.by.province <- group_by(konkor, province) %>%
+  summarise(score = mean(score, na.rm = T))
+
+# head(students.by.province)
+# head(score.by.province)
+
+data <- inner_join(students.by.province, score.by.province)
+# glimpse(data)
+
+treemap(data,
+        index = "province",
+        vSize = "n",
+        vColor = "score",
+        type="manual",
+        palette=c("#FFFFFF", "#6C512E"),
+        title = "")
+```
+
+> Read about the **Konkor** exam in Afghanistan in the footnote.^[The nationwide university entrance exam for public universities is called Konkor exam. Every year, tens of thousands of students from all over the country participate in this exam. Top students usually spend years in preparation for this exam. Parents put a lot expectations on their children to perform well and get admission to top faculties and universities. To some extent, success becomes a family pride and failure becomes shame. Whether students prepare a lot or none, taking Konkor exam is likely the most stressful experience of their lives up to that point (around 18 years old). I have taken this exam in 2006 with relatively good score that admitted me to the Engineering faculty of Balkh University. However, I studied only one semester there before moving to India to study my undergraduate education.]
+
+Konkor data is not public, but Konkor results dataset was publicly shared by various individuals on social media on August 1, 2018. As the dataset include personal information, I will aggregate the results at provincial level without using personal information such as names.
+
+
