@@ -10,6 +10,7 @@ tags:
   - visualization
   - function
 highlight: tango
+description: Explore visdat package for visualizing missing values. Replicate visdat using ggplot for a more flexible function to visualize not only missing values but any other value, for example df==5.
 ---
 
 

@@ -10,6 +10,7 @@ tags:
   - visualization
   - function
 highlight: tango
+description: Explore visdat package for visualizing missing values. Replicate visdat using ggplot for a more flexible function to visualize not only missing values but any other value, for example df==5.
 ---
 
 
@@ -43,7 +44,6 @@ highlight: tango
 <p>Let’s explore the <strong>visdat</strong> package that promises to provide an easy way to inspect <code>NA</code>’s for the whole dataset. If you haven’t used it before, you have to install it and then load it.</p>
 <pre class="r"><code># install.packages(&quot;visdat&quot;)    #installs visdat package
 library(visdat)                 #loads visdat package</code></pre>
-<pre><code>## Warning: package &#39;visdat&#39; was built under R version 3.2.5</code></pre>
 <p>There are two functions in <strong>visdat</strong> package that we need to know: <code>vis_miss()</code> function that plots missing values in a dataset and <code>vis_dat()</code> function that plots class of variables in a dataset in addition to missing values. After loading the <strong>visdat</strong> package, both functions are available and they take a data.frame object as argument and returns a plot of that data.frame.</p>
 <p>Let’s use <strong>airquality</strong> dataset with <code>vis_miss()</code> function to visualize missing values. This plots the columns in <strong>airquality</strong> data.frame vertically and observations horizontally, resembling the way data is stored. Black color represents missing values and grey color represents non-missing values. There is even percentages of missing vlaues with one decimal points for each column and an overall percentage in the legend, which I find extremely useful. Compared to <code>summary()</code>, this plot gives a lot more information.</p>
 <pre class="r"><code>vis_miss(airquality)</code></pre>
