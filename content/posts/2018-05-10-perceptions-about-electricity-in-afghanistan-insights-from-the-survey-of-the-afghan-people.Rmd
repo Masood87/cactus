@@ -10,6 +10,7 @@ tags:
   - AfghanSurvey
   - electricity
 code_download: true
+description: An analysis of electricity perceptions in Afghanistan. This analysis uses the Survey of the Afghan People data, an annual survey of perceptions from a nationally representative sample of Afghans. The survey has collected attitudes and perceptions uninterruptedly since 2006, with over 97,000 Afghans taking part.
 ---
 
 
@@ -35,7 +36,6 @@ shp <- readShapePoly("~/Desktop/ShinyApps/Province mapmaker/AFG_adm1.shp")
 ```
 
 ### About
-This analysis is prepared following a requrest from *Peter Stevenson* of Mercy Corps--Afghanistan.
 
 This analysis uses the Survey of the Afghan People data, an annual survey of perceptions from a nationally representative sample of Afghans. The survey has collected attitudes and perceptions uninterruptedly since 2006, with over 97,000 Afghans taking part. The the latest survey report [here][report], or download the raw data [here][download].
 <br /><br />
