@@ -14,10 +14,7 @@
   
   
   <meta name="twitter:title" content="Collecting Tweets with R"/>
-  <meta name="twitter:description" content="In this post I am going to download tweets using twitteR package.
-To being, you have to have a twitter account. If you do not have, create a twitter account on twitter.com.
- Create a twitter application on apps.twitter.com. There, you have to insert a number of information, see the following screen shot.
-   Once, you created an application, you will have access to API Key and API Secret in the Keys and Access Tokens tab."/>
+  <meta name="twitter:description" content="A short guide to collecting tweets from twitter API using R and twitteR package."/>
   
     <meta name="twitter:site" content="@masood87r"/>
   
@@ -75,7 +72,7 @@ To being, you have to have a twitter account. If you do not have, create a twitt
                     </h1>
                     <h2 class="headline">
                     Jun 14, 2018 00:00
-                    · 280 words
+                    · 318 words
                     · 2 minute read
                       <span class="tags">
                       
@@ -95,13 +92,7 @@ To being, you have to have a twitter account. If you do not have, create a twitt
                     <p>In this post I am going to download tweets using <strong>twitteR</strong> package.</p>
 <ol style="list-style-type: decimal">
 <li><p>To being, you have to have a twitter account. If you do not have, create a twitter account on <a href="https://twitter.com">twitter.com</a>.</p></li>
-<li><p>Create a twitter application on <a href="https://apps.twitter.com">apps.twitter.com</a>. There, you have to insert a number of information, see the following screen shot.</p></li>
-</ol>
-<div class="figure">
-<img src="/post/2018-06-13-collecting-tweets_files/Screen%20Shot%202018-06-13%20at%205.58.31%20PM.png" style="width:100.0%" />
-
-</div>
-<ol start="3" style="list-style-type: decimal">
+<li><p>Create a twitter application on <a href="https://apps.twitter.com">apps.twitter.com</a>. There, you have to insert a number of information.</p></li>
 <li><p>Once, you created an application, you will have access to <em>API Key</em> and <em>API Secret</em> in the <strong>Keys and Access Tokens</strong> tab. In the same tab, you can create <em>access tokens</em> too. Store these information in R, but before that you have to do the step 4.</p></li>
 <li><p>Go to RStudio: install and attach <strong>twitteR</strong> package.</p></li>
 </ol>
@@ -122,15 +113,18 @@ access_secret &lt;- &quot;YOUR_ACCESS_SECRET&quot;</code></pre>
                     access_token=access_token, 
                     access_secret=access_secret)</code></pre>
 <pre><code>## [1] &quot;Using direct authentication&quot;</code></pre>
-<pre><code>## Warning in strptime(x, fmt, tz = &quot;GMT&quot;): unknown timezone &#39;default/Asia/
-## Kabul&#39;</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>Collect tweets of your interest. For example, I want to collect 500 tweets that used <strong>#Afghanistan</strong>. That simple!</li>
+<li>Collect tweets of your interest that contains certain text with <code>searchTwitteR()</code> function. For example, I want to collect 500 tweets that used <strong>#Afghanistan</strong>. That’s simple!</li>
 </ol>
-<pre class="r"><code>tw_afghanistan &lt;- searchTwitteR(searchString = &quot;#Afghanistan&quot;, n = 500)</code></pre>
+<pre class="r"><code>tw_afghanistan &lt;- searchTwitteR(searchString = &quot;#Afghanistan&quot;, n = 5)</code></pre>
 <p>At this stage, you will have the tweets in the form of a list. You can do any operation that is applicable on lists and character format. For starters, you can print the first tweet.</p>
 <pre class="r"><code>tw_afghanistan[[1]]</code></pre>
-<pre><code>## [1] &quot;ASJ_Leipzig: RT @luna_le: Korrektur: #Sachsen schiebt nun ohne Einschränkungen nach #Afghanistan ab. Wie immer wird Bayern nachgeeifert bei der härteste…&quot;</code></pre>
+<pre><code>## [1] &quot;jasmin_djokaj: RT @Antiwarcom: 17 Years of War (and More to Come)\nAnniversaries That Never Will Be\nby Tom Engelhardt\n@TomDispatch #Afghanistan\nhttps://t.c…&quot;</code></pre>
+<p>Collect tweets from a specific user using <code>userTimeline()</code> function. Here, let’s see what I have tweeted recently.</p>
+<pre class="r"><code>tw_masood &lt;- userTimeline(&quot;masood87r&quot;, n = 5)</code></pre>
+<p>Let’s see the latest tweet.</p>
+<pre class="r"><code>tw_masood[[1]]</code></pre>
+<pre><code>## [1] &quot;masood87r: The rest of the world, particularly academia, needs to learn from #rstats community. Thanks @StatGarrett for your w… https://t.co/BAvF50OeYJ&quot;</code></pre>
 <p>In the next post, I will explore other packages related to <strong>twitter</strong> and also write about how to do analysis and visualize twitter data.</p>
 
                 </section>
