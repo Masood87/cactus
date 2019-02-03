@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/analyzing-konkor-1397-results/</loc>
+    <loc>/post/inspecting-konkor-1397-data/</loc>
     <lastmod>2018-08-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -120,13 +120,13 @@
   </url>
   
   <url>
-    <loc>/categories/git/</loc>
+    <loc>/tags/git/</loc>
     <lastmod>2018-06-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/git/</loc>
+    <loc>/categories/git/</loc>
     <lastmod>2018-06-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -156,14 +156,14 @@
   </url>
   
   <url>
-    <loc>/categories/r-tips/</loc>
-    <lastmod>2018-06-14T00:00:00+00:00</lastmod>
+    <loc>/tags/r-tips/</loc>
+    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/r-tips/</loc>
-    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
+    <loc>/categories/r-tips/</loc>
+    <lastmod>2018-06-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -12,14 +12,15 @@
     
     
     <item>
-      <title>Analyzing Konkor 1397 (2018) Results</title>
-      <link>/post/analyzing-konkor-1397-results/</link>
+      <title>Inspecting Konkor 1397 (2018) Data</title>
+      <link>/post/inspecting-konkor-1397-data/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/analyzing-konkor-1397-results/</guid>
+      <guid>/post/inspecting-konkor-1397-data/</guid>
       <description>Read about the Konkor exam in Afghanistan in the footnote.1
- Konkor data is not public, but Konkor results dataset was publicly shared by various individuals on social media on August 1, 2018. As the dataset include personal information, I will aggregate the results at provincial level without using personal information such as names.
- The nationwide university entrance exam for public universities is called Konkor exam. Every year, tens of thousands of students from all over the country participate in this exam.</description>
+ Disclaimer: Konkor data is not public, but Konkor results dataset was publicly shared by various individuals on social media on August 1, 2018. As the dataset include personal information, I will aggregate the results at provincial level without using personal information such as names.
+The data has the following variables or indicators:
+  Variables Description    name Name of test taker  gender Gender of test taker  gradyear Year graduated from high school  score Konkor test score  province Name of Province  cheat Whether test taker was caught cheating  fail Whether test taker failed or admitted to university  pvt_univ Whether test taker graduated from a private university  univ_prov Not admitted but eligible for Private Universities    Participation Overall, approximately 159 thousand high school graduates took part in the konkor exam of 1397, from all provinces.</description>
     </item>
     
     <item>
