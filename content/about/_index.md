@@ -2,9 +2,9 @@
 title: "About"
 ---
 
-My name is Masood Sadat, from Afghanistan living in Kabul. I am trained in economics but my interest transcends economics to all social sciences, technology and data science. In addition to my formal education, which I owe a lot of my knowledge to, I have been self-learning and teaching others topics in data analysis and data science since 2014. I start this website/blog to share custom analysis I carry out every now and then, R and Stata tips and tricks, and other related posts for anyone interested and for my future self.
+My name is Masood Sadat. I am from **Afghanistan**, but currently work and live in the beautiful city of **Prague**, Czechia. I am trained in economics and work as an economist, but my interest transcends just **economics** to **data science**, **computer science**, and all things related to **technology**. In addition to my formal education, which perhaps shaped my ways of thinking, I owe a lot of my knowledge to online sources, most of them free. I also enjoy sharing my knowledge to those who are eager and curious. I have thought a number of courses on data analysis with R and Stata, starting from the second half of 2014. The picture in this blog shows me recording a video lecture inside four sofa cushions to help cancel outside noise in the office in 2014. Photo is taken by my supervisor Zach Warren, who also lent me his macbook to record.
 
-Last year I created [**Afghanistan Data Hub**](http://afghanistandatahub.com) to upload useful data sets on Afghanistan. In the near future, I plan to move it to my personal website.
+I start this website/blog out of curiosity and interest to share what I learn, custom analysis I carry out every now and then, tips and tricks, and other related posts for anyone interested and for my future self. Most of the posts will be in R, but I think I will be sharing other about programming languages and statistical languages if necessary.
 
 Links to my [**Twitter**](https://twitter.com/masood87r), [**Linkedin**](https://linkedin.com/masoodsdt), or [**github**](https://github.com/masood87).
 

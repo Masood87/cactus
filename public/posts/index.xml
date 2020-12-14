@@ -97,7 +97,7 @@ library(tidyverse) library(broom) library(plotly) A simple linear regression usi
       <guid>/posts/2018-05-18-basics_of_github_through_command_line/</guid>
       <description>Create account and repository on github.com Go to github.com and create an account. Once, account is created, create a repository in Repositories tab and click on the green button New. The following page opens.
  NOTE: A repository is something like a project folder.
-   Copy repository URL After a new repository is created, copy the clone url link. This link is used to clone the repository from server to the computer.</description>
+  Copy repository URL After a new repository is created, copy the clone url link. This link is used to clone the repository from server to the computer.</description>
     </item>
     
     <item>

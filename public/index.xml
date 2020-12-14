@@ -6,10 +6,19 @@
     <description>Recent content on Masood Sadat Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Essentials of data.table</title>
+      <link>/post/essentials-of-data-table/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/essentials-of-data-table/</guid>
+      <description>Motivation data.table is a R package that offers an enhanced version of data.frame and allows very fast data manupulation. As data.table is data.frame too, all functions and operations that apply to data.frame also applies to data.table. However, there are many enhancements that are only available in data.table, and unavailable in data.frame. I used to be an avid user of tidyverse since I had started working with R. But recently, I started working with very large dataframes (few million obs.</description>
+    </item>
     
     <item>
       <title>Inspecting Konkor 1397 (2018) Data</title>
@@ -127,7 +136,7 @@ library(tidyverse) library(broom) library(plotly) A simple linear regression usi
       <guid>/posts/2018-05-18-basics_of_github_through_command_line/</guid>
       <description>Create account and repository on github.com Go to github.com and create an account. Once, account is created, create a repository in Repositories tab and click on the green button New. The following page opens.
  NOTE: A repository is something like a project folder.
-   Copy repository URL After a new repository is created, copy the clone url link. This link is used to clone the repository from server to the computer.</description>
+  Copy repository URL After a new repository is created, copy the clone url link. This link is used to clone the repository from server to the computer.</description>
     </item>
     
     <item>

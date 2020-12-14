@@ -48,14 +48,12 @@ description: Week 1 of Data Analysis with R- Commence first steps with R using R
 <h1>R and RStudio</h1>
 <p><strong>R</strong> is an opern-source programming language for statistical analysis. Being open-source, unlike similar software such as Stata, SAS and SPSS, it is free to use. R was created in 1994 and it has become arguably the most popular language for statistical analysis.</p>
 <p><strong>RStudio</strong> is the most popular graphical user interface (GUI) for R which is developed by a company with the same name.</p>
-<p>Read more about R and RStudio here: <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a>, <a href="https://en.wikipedia.org/wiki/RStudio">RStudio</a> Install R and RStudio here: <a href="https://cran.r-project.org">install R</a>, <a href="https://www.rstudio.com/products/rstudio/download/#download">install RStudio</a></p>
+<p>Read more about R and RStudio here: <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a>, <a href="https://en.wikipedia.org/wiki/RStudio">RStudio</a>
+Install R and RStudio here: <a href="https://cran.r-project.org">install R</a>, <a href="https://www.rstudio.com/products/rstudio/download/#download">install RStudio</a></p>
 </div>
 <div id="rstudio-interface" class="section level1">
 <h1>RStudio interface</h1>
-<div class="figure">
-<img src="/posts/2018-07-12-day-1-introduction-to-r_files/rstudio%20interface.png" width="100" />
-
-</div>
+<p><img src="/posts/2018-07-12-day-1-introduction-to-r_files/rstudio%20interface.png" width="100" /></p>
 <ul>
 <li><strong>R Script</strong> is where R code is typed and saved. We can execute codes directly from R script to Console using <strong>Cntrl</strong> + <strong>Enter</strong> (Windwos) or <strong>command</strong> + <strong>Enter</strong> (Mac). We can also add notes after typing “#”, which will not execute as the rest of the code.</li>
 <li><strong>Console</strong> is where code is executed and result is printed. We can directly type code in console or run code from <em>R script</em> section.</li>
@@ -134,10 +132,7 @@ my_logical   &lt;- TRUE</code></pre>
 <li><strong>Data Frames:</strong> <em>A collection of data points arranged into rows and columns (like matrices) but each column can have different data type (unlike matrices)</em></li>
 <li><strong>Lists:</strong> <em>A collection/list of data objects, such as vectors, matrices, data frames, or even other lists</em></li>
 </ul>
-<div class="figure">
-<img src="/posts/2018-07-12-day-1-introduction-to-r_files/objects.png" style="width:100.0%" />
-
-</div>
+<p><img src="/posts/2018-07-12-day-1-introduction-to-r_files/objects.png" style="width:100.0%" /></p>
 </div>
 </div>
 <div id="vectors" class="section level1">
@@ -148,8 +143,8 @@ my_logical   &lt;- TRUE</code></pre>
 <pre class="r"><code>1:4</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>rep(&quot;hello&quot;, 10) # repeat &quot;hello&quot;, 10 times</code></pre>
-<pre><code>##  [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot;
-##  [9] &quot;hello&quot; &quot;hello&quot;</code></pre>
+<pre><code>##  [1] &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot; &quot;hello&quot;
+## [10] &quot;hello&quot;</code></pre>
 <p>In general, we create a vector with the combine function <strong>c()</strong></p>
 <pre class="r"><code>numeric_vector &lt;- c(1, 2.1, -4, 6.8, 2, -1)
 character_vector &lt;- c(&quot;Kabul&quot;, &quot;India&quot;, &quot;کشتی&quot;, &quot;5&quot;, &quot;.&quot;)
@@ -254,17 +249,13 @@ A</code></pre>
 </div>
 <div id="joining-matrices" class="section level2">
 <h2>Joining matrices</h2>
-<p>There are two ways to join matrices: - <strong>rbind:</strong> add new rows - <strong>cbind:</strong> add new columns</p>
+<p>There are two ways to join matrices:
+- <strong>rbind:</strong> add new rows
+- <strong>cbind:</strong> add new columns</p>
 <p>In <strong>row bind</strong>, we add one matrix on top of another matrix</p>
-<div class="figure">
-<img src="/posts/2018-07-12-day-1-introduction-to-r_files/row%20bind.png" style="width:100.0%" />
-
-</div>
+<p><img src="/posts/2018-07-12-day-1-introduction-to-r_files/row%20bind.png" style="width:100.0%" /></p>
 <p>In <strong>column bind</strong>, we add one matrix on the right side of another matrix</p>
-<div class="figure">
-<img src="/posts/2018-07-12-day-1-introduction-to-r_files/column%20bind.png" style="width:100.0%" />
-
-</div>
+<p><img src="/posts/2018-07-12-day-1-introduction-to-r_files/column%20bind.png" style="width:100.0%" /></p>
 <p>Let’s join matrix A and B, once by row and once by column:</p>
 <pre class="r"><code>A &lt;- matrix(1:9, nrow = 3)
 B &lt;- matrix(11:19, nrow = 3)

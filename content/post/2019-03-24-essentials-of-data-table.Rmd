@@ -1,0 +1,65 @@
+---
+title: Essentials of data.table
+author: Masood Sadat
+date: '2019-03-24'
+slug: essentials-of-data-table
+categories:
+  - r tips
+tags:
+  - r tips
+draft: true
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+knitr::opts_chunk$set(message=FALSE, warning=FALSE)
+```
+
+## Motivation
+
+**data.table** is a R package that offers an enhanced version of data.frame and allows very fast data manupulation. As data.table is data.frame too, all functions and operations that apply to data.frame also applies to data.table. However, there are many enhancements that are only available in data.table, and unavailable in data.frame. I used to be an avid user of [tidyverse](https://www.tidyverse.org) since I had started working with R. But recently, I started working with very large dataframes (few million obs. at the least) and there I had to change to **data.table** because of speed. After working for a few weeks, I started appreciating its concise syntax as well. Therefore, I decided to write this blog post to share my knowledge with others and for my future use.
+
+
+## Subsetting
+
+Using hard bracket notation **[** and **]**, I can subset a data.table object's rows or columns. Let's get started:
+
+```{r}
+# load data.table package
+library(data.table)
+
+# check class of df
+df <- mtcars
+class(df)
+
+# turn df into data.table
+setDT(df)
+class(df)
+
+# subset first five rows
+df[1:5]
+
+# subset columns
+df[, 1:5]
+
+# subset rows and columns
+df[1:5, 1:5]
+
+# subset by condition
+df[mpg > 30]
+df[mpg > 30 & wt > 2]
+df[cyl %in% c(4, 8) & hp > 100]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
